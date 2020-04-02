@@ -2,6 +2,8 @@
 # Created by https://www.gitignore.io/api/macos,django,python,pycharm
 # Edit at https://www.gitignore.io/?templates=macos,django,python,pycharm
 
+### Dima ###
+prod_settings.py
 
 ### Django ###
 *.log
