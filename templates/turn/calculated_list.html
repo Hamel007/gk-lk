@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="content">
+
+        {% include 'include/turn_menu.html' %}
+
+        <div class="content-body">
+            <table>
+                <thead>
+                <tr>
+                    <td>ФИО</td>
+                    <td>Номер счета</td>
+                    <td>Дата вступления в ЖК</td>
+                    <td>Дата полного погашения</td>
+                </tr>
+                </thead>
+                {% for member in object_list %}
+                    <tbody>
+                    <tr>
+                        <td>{{ member.user }}</td>
+                        <td>{{ member.number_score }}</td>
+                        <td>{{ member.date_entry }}</td>
+                        <td>{{ member.date_repayment }}</td>
+                    </tr>
+                    </tbody>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="paginator">
+            <a href="" class="page-prev"></a>
+            <a href="">1</a>
+            <a href="">2</a>
+            <a href="" class="active">3</a>
+            <a href="">4</a>
+            <a href="">5</a>
+            <a href="" class="page-next"></a>
+        </div>
+    </div>
+{% endblock %}

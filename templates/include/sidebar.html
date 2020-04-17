@@ -1,0 +1,32 @@
+<nav>
+    <ul>
+        <li><a href="{% url 'members_list' %}">Очередь</a></li>
+        <li>
+            <a href="javascript:;" class="mainitem">Документы<span class="dropdown"></span></a>
+            <ul>
+                <li><a href="">Верификация документов</a></li>
+                <li><a href="">Документы</a></li>
+                <li><a href="">Инструкции</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="mainitem">Взносы<span class="dropdown"></span></a>
+            <ul>
+                <li><a href="">Внести платеж</a></li>
+                <li><a href="">График платежей</a></li>
+                <li><a href="">История платежей</a></li>
+            </ul>
+        </li>
+        <li><a href="">Профиль</a></li>
+        <li>
+            <a href="javascript:;" class="mainitem">Распространение<span class="dropdown"></span></a>
+            <ul>
+                <li><a href="">Ссылки для приглашения</a></li>
+                <li><a href="">Иерархия приглашений</a></li>
+            </ul>
+        </li>
+        <li><a href="">Поддержка</a></li>
+        <li><a href="">Калькулятор</a></li>
+        <li class="active"><a href="{% url 'news' %}">Новости</a></li>
+    </ul>
+</nav>

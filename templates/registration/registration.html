@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Регистрация в системе</title>
+	<link rel="stylesheet" href="{% static 'style.css' %}">
+	<link rel="stylesheet" href="{% static 'media.css' %}">
+	<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+	<link rel="icon" href="{% static 'favicon.png' %}" type="image/png" />
+</head>
+
+<body>
+	<main>
+		<div class="const autoriz registr">
+			<div class="logo">
+				<img src="{% static 'img/logo.png' %}" alt="">
+			</div>
+			<div class="auth-block">
+				<h1>Регистрация в системе</h1>
+				<form action="">
+					<span>Вас пригласил: Иванов Андрей Аркадьевич</span><br>
+					<input type="text" name="" id="" placeholder="ФИО">
+					<label>Дата рождения:</label>
+					<input type="date" name="" id="" placeholder="Дата рождения">
+					<input type="text" name="" id="" placeholder="Гражданство">
+					<hr>
+					<input type="email" placeholder="E-mail" class="number-auth">
+					<input type="password" name="" id="" placeholder="Пароль">
+					<input type="password" name="" id="" placeholder="Повторите пароль">
+					<hr>
+					<input type="text" name="" id="" placeholder="Телефон">
+					<input type="text" name="" id="" placeholder="Стоимость жилья">
+					<input type="text" name="" id="" placeholder="Серия и номер паспорта">
+					<input type="text" name="" id="" placeholder="Кем и когда выдан">
+					<input type="text" name="" id="" placeholder="Регион приобретения объекта недвижимости">
+					<input type="button" value="Зарегистрироваться" class="savebut">
+				</form>
+			</div>
+		</div>
+	</main>
+	<script src="{% static 'js/script.js' %}"></script>
+	<script src="{% static 'js/jquery.maskedinput.min.js' %}"></script>
+	<script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+</body>
+
+</html>

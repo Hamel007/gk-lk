@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="content">
+
+        {% include 'include/turn_menu.html' %}
+
+        <div class="content-body">
+            <table>
+                <thead>
+                <tr>
+                    <td>ФИО</td>
+                    <td>Дата регистрации</td>
+                    <td>Дата активации</td>
+                    <td>Дата покупки объекта</td>
+                    <td>Срок рассрочки</td>
+                    <td>Процент рассрочки</td>
+                </tr>
+                </thead>
+                {% for member in object_list %}
+                    <tbody>
+                    <tr>
+                        <td>{{ member.user }}</td>
+                        <td>{{ member.user.date_joined }}</td>
+                        <td>{{ member.date_joined }}</td>
+                        <td>{{ member.date_acquisition }}</td>
+                        <td>{{ member.installment_period }}</td>
+                        <td>{{ member.percent_installment }}</td>
+                    </tr>
+                    </tbody>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="paginator">
+            <a href="" class="page-prev"></a>
+            <a href="">1</a>
+            <a href="">2</a>
+            <a href="" class="active">3</a>
+            <a href="">4</a>
+            <a href="">5</a>
+            <a href="" class="page-next"></a>
+        </div>
+    </div>
+{% endblock %}
