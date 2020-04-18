@@ -4,6 +4,7 @@
 
 ### Dima ###
 prod_settings.py
+venv
 
 ### Django ###
 *.log
