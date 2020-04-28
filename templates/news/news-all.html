@@ -2,6 +2,18 @@
 {% load static %}
 {% block title %}ЖК Современные решения{% endblock %}
 
+{% block mobile %}
+    <!-- Меню и заголовок для мобилы -->
+    <div class="const mobile-nav">
+        <a href="javascript:;" class="menu-open"></a>
+        <h1>
+            Новости
+            <!-- Дублировал для мобильной версии -->
+        </h1>
+    </div>
+<!-- /Меню и заголовок для мобилы -->
+{% endblock mobile %}
+
 {% block content %}
         {% include 'news/news_list.html' %}
 {% endblock %}

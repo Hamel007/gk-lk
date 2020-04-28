@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block mobile %}
+	<!-- Меню и заголовок для мобилы -->
+	<div class="const mobile-nav">
+		<a href="javascript:;" class="menu-open"></a>
+		<h1>
+			Иерархия приглашений <!-- Дублировал для мобильной версии -->
+		</h1>
+	</div>
+	<!-- /Меню и заголовок для мобилы -->
+{% endblock mobile %}
+
+
+{% block content %}
+			<div class="content">
+				<h1>
+					Иерархия приглашений
+				</h1>
+				<div class="content-body">
+					<p>
+						За свою бытность вы пригласили <b>16</b> кандидатов в пайщики и <b>2</b> распространителя
+					</p>
+					<div class="table">
+					<table>
+						<thead>
+							<tr>
+								<td>ФИО</td>
+								<td>Номер счета</td>
+								<td>Статус</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Жириновский Геннадий Владимирович</td>
+								<td>COOP-007-20203232</td>
+								<td>Кандидат в пайщики</td>
+							</tr>
+							<tr>
+								<td>Жириновский Геннадий Владимирович</td>
+								<td>COOP-007-20203232</td>
+								<td>Кандидат в пайщики</td>
+							</tr>
+							<tr>
+								<td>Жириновский Геннадий Владимирович</td>
+								<td>COOP-007-20203232</td>
+								<td>Кандидат в пайщики</td>
+							</tr>
+							<tr>
+								<td>Жириновский Геннадий Владимирович<br><span class="table-small">Пригласил еще 8 кандидатов в пайщики</span></td>
+								<td>COOP-007-20203232</td>
+								<td>Распространитель 3ур.</td>
+							</tr>
+							<tr>
+								<td>Жириновский Геннадий Владимирович</td>
+								<td>COOP-007-20203232</td>
+								<td>Кандидат в пайщики</td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+
+                    {% include "include/pagination.html" %}
+
+				</div>
+
+			</div>
+{% endblock content %}

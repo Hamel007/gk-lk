@@ -17,19 +17,22 @@ class Profile(models.Model):
     #     - администратор
 
     user = models.OneToOneField(User, verbose_name="Пользователь", on_delete=models.CASCADE)
+    full_name = models.CharField("ФИО", max_length=100)
     number_user = models.CharField("Личный номер пользователя", max_length=50, blank=True, null=True)
-    phone = models.CharField("Телефон", max_length=20, blank=True, null=True)
-    email = models.EmailField("Email", max_length=50, blank=True, null=True)
-    passport = models.CharField("Паспорт", max_length=15, blank=True, null=True)
-    birthday = models.DateField("Дата рождения", max_length=8, blank=True, null=True)
-    citizenship = models.CharField("Гражданство", max_length=25, blank=True, null=True)
+    phone = models.CharField("Телефон", max_length=12)
+    email = models.EmailField("Email", max_length=50)
+    passport = models.CharField("Паспорт", max_length=15)
+    birthday = models.DateField("Дата рождения", max_length=8, null=True)
+    citizenship = models.CharField("Гражданство", max_length=25)
     division_code = models.CharField("Код подразделения", max_length=15, blank=True, null=True)
-    date_passport = models.DateField("Дата выдачи паспорта", blank=True, null=True)
+    date_passport = models.DateField("Дата выдачи паспорта", null=True)
     inn = models.IntegerField("ИНН", blank=True, null=True)
-    by_passport = models.CharField("Кем выдан", max_length=250, blank=True, null=True)
+    by_passport = models.CharField("Кем выдан", max_length=250)
     profile_region = models.CharField("Регион", max_length=50, blank=True, null=True)
     profile_city = models.CharField("Город", max_length=50, blank=True, null=True)
     schooling = models.TextField("Образование", max_length=15, blank=True, null=True)
+    region_purchase = models.CharField("Регион преобритения объекта недвижимости", max_length=50)
+    cost_housing = models.PositiveIntegerField("Стоимость жилья", null=True)
 
     date_activation = models.DateTimeField("Дата активации",
                                            help_text="Заполняется администратором",
@@ -117,12 +120,13 @@ class AddressPost(AbstractAddressModel):
         verbose_name_plural = "Почтовые адреса для связи"
 
 
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    """Создание профиля пользователя при регистрации"""
-    if created:
-        Profile.objects.create(user=instance, id=instance.id)
-        instance.profile.save()
+# происходит конфликт с формой регистрации
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     """Создание профиля пользователя при регистрации"""
+#     if created:
+#         Profile.objects.create(user=instance, id=instance.id)
+#         instance.profile.save()
 
 # 4.3. Анкета
 

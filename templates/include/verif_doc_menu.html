@@ -1,0 +1,8 @@
+{% load link_tags %}
+
+<ul class="pages-menu">
+    {% url 'verification' as verification %}
+    <li {% if verification|active:request %} class="active" {% endif %}><a href="{% url 'verification' %}">Документы</a></li>
+    {% url 'photo_verif' as photo_verif %}
+    <li {% if photo_verif|active:request %} class="active" {% endif %}><a href="{% url 'photo_verif' %}">Фотоверификация</a></li>
+</ul>

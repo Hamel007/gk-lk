@@ -1,0 +1,11 @@
+{% load link_tags %}
+
+<ul class="pages-menu">
+    {% url 'entrance_fee' as entrance_fee %}
+    <li {% if entrance_fee|active:request %} class="active" {% endif %}><a href="{% url 'entrance_fee' %}">Вступительный взнос</a></li>
+    {% url 'share_premium' as share_premium %}
+    <li {% if share_premium|active:request %} class="active" {% endif %}><a href="{% url 'share_premium' %}">Паевый взнос</a></li>
+    {% url 'confirm_payment' as confirm_payment %}
+    <li {% if confirm_payment|active:request %} class="active" {% endif %}><a href="{% url 'confirm_payment' %}">Подтвердить взнос</a></li>
+</ul>
+
