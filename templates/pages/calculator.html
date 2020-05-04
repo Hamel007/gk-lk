@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block mobile %}
 	<!-- Меню и заголовок для мобилы -->
@@ -13,144 +14,137 @@
 
 
 {% block content %}
-			<div class="content">
-				<h1>
-					Калькулятор
-				</h1>
+    <div class="content">
+        <h1>
+            Калькулятор
+        </h1>
 
 
-				<div class="content-body">
-<form action="" class="calcul-form">
-<div>
-<label>Стоимость объекта:</label><input type="text" placeholder="10 000 000"><label>₽</label>
-</div>
-<div>
-<label>Выбранная программа:</label>
-<select name="" id="">
-	<option value="">НАКОПИТЕЛЬНАЯ</option>
-	<option value="">ОПТИМАЛЬНАЯ 50%»</option>
-	<option value="">МИНИМАЛЬНАЯ 35%</option>
-</select>
-</div>
-<div>
-<label>Период рассрочки:</label>
-<input type="number" name="" id="" value="120" max="120"><label>месяцев</label>
-</div>
-<div>
-	<label>Вступительный взнос:</label><input type="text" value="100000" disabled><label>₽</label>
-</div>
-<div>
-	<label>Ежемесячный членский взнос:</label><input type="text" value="100000" disabled><label>₽</label>
-</div>
-<div>
-	<label>Минимальный ежемесячный паевый взнос:</label><input type="text" value="100000" disabled><label>₽</label>
-</div>
-<div>
-	<label>Переплата при ипотечном кредитовании:</label><input type="text" value="100000" disabled><label>₽</label>
-</div>
-<input type="button" value="Рассчитать" class="savebut">
+        <div class="content-body">
+            <form action="" class="calcul-form">
+                <div>
+                    <label>Стоимость объекта:</label><input type="text" id="input_summa" value="10000000"><label>₽</label>
+                </div>
+                <div>
+                    <label>Выбранная программа:</label>
+                    <select name="" id="input_rate">
+                        {% for program in programs %}
+                        <option value="{{ program.percent_fee }}">{{ program.title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label>Период рассрочки:</label>
+                    <input type="number" name="" id="input_period" value="120" max="120"><label>месяцев</label>
+                </div>
+                <div>
+                    <label>Вступительный взнос:</label><input type="text" id="vstup_vznos" value="" disabled><label>₽</label>
+                </div>
+                <div>
+                    <label>Ежемесячный членский взнос:</label><input type="text" id="mounth_vznos" value="" disabled><label>₽</label>
+                </div>
+                <div>
+                    <label>Минимальный ежемесячный паевый взнос:</label><input type="text" id="paev_vznos" value="" disabled><label>₽</label>
+                </div>
+                <div>
+                    <label>Переплата при ипотечном кредитовании:</label><input type="text" id="percent_mortgage" value="" disabled><label>₽</label>
+                </div>
+                <input type="button" value="Рассчитать" class="savebut" id="sender">
+            </form>
 
-</form>
+            <div class="info"><img src="{% static 'img/information.svg' %}" alt="">Расчет произведен</div>
+            <div class="error"><img src="{% static 'img/error.svg' %}" alt="">Ошибка рассчета. Проверьте правильность введенных данных.</div>
 
-	<div class="info"><img src="img/information.svg" alt="">Расчет произведен</div>
-	<div class="error"><img src="img/error.svg" alt="">Ошибка рассчета. Проверьте правильность введенных данных.</div>
+            <div class="table calcul-table" id="print-content">
+
+            </div>
+	        <input type="button" value="Распечатать" class="savebut" onClick="javascript:;CallPrint('print-content');">
+
+        </div>
+    </div>
+
+<script>
 
 
-	<div class="table calcul-table">
-		<table>
-			<thead>
-				<tr>
-					<td>Месяц</td>
-					<td>Средства, представленные ЖК</td>
-					<td>Членский взнос (ежемесячный)</td>
-					<td>Паевый взнос (ежемесячный)</td>
-					<td>Сумма оплат (в месяц)</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>3 600 600</td>
-					<td>2 000</td>
-					<td>32 800</td>
-					<td>34 500</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>3 600 600</td>
-					<td>2 000</td>
-					<td>32 800</td>
-					<td>34 500</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>3 600 600</td>
-					<td>2 000</td>
-					<td>32 800</td>
-					<td>34 500</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>3 600 600</td>
-					<td>2 000</td>
-					<td>32 800</td>
-					<td>34 500</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>3 600 600</td>
-					<td>2 000</td>
-					<td>32 800</td>
-					<td>34 500</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>3 600 600</td>
-					<td>2 000</td>
-					<td>32 800</td>
-					<td>34 500</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>3 600 600</td>
-					<td>2 000</td>
-					<td>32 800</td>
-					<td>34 500</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>3 600 600</td>
-					<td>2 000</td>
-					<td>32 800</td>
-					<td>34 500</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>3 600 600</td>
-					<td>2 000</td>
-					<td>32 800</td>
-					<td>34 500</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>3 600 600</td>
-					<td>2 000</td>
-					<td>32 800</td>
-					<td>34 500</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>3 600 600</td>
-					<td>2 000</td>
-					<td>32 800</td>
-					<td>34 500</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<input type="button" value="Распечатать" class="savebut">
+// получаю из базы
+$("#sender").click(function () {
+    let summa = $('#input_summa').val();
+    let programa = $('#input_rate').val();
 
-				</div>
+    $.ajax({
+        url: '{% url 'get_response' %}',
+        data: {
+          'summa': summa,
+            "programa": programa,
+        },
+        dataType: 'json',
+        success: function (data) {
+          document.getElementById('vstup_vznos').value = data["vstup_vznos"];
+          document.getElementById('mounth_vznos').value = data["mounth_vznos"];
+          let egem_chlens_vzn = data["mounth_vznos"];
+          let percent_mortgage = data["percent_mortgage"];
+          let min_payment = data["min_payment"]
 
-			</div>
+
+
+    // Переплата при ипотечном кредитовании:
+    // Вводит пользователь
+    //let summa = document.getElementById("input_summa").value;
+    let rate = $("#input_rate").val() / 100;
+    let period = $("#input_period").val();
+
+    // Выводим в таблице
+    let table = document.querySelector(".table");
+
+
+    let str = "<table><thead><tr>" +
+        "<td>Месяц</td>" +
+        "<td>Средства, представленные ЖК</td>" +
+        "<td>Членский взнос (ежемесячный)</td>" +
+        "<td>Паевый взнос (ежемесячный)</td>" +
+        "<td>Сумма оплат (в месяц)</td></tr></thead>"
+
+    // Расчет
+    let summary_credit = +(summa - (summa * rate)).toFixed(2);
+    let paev_vz = +((summa - (summa * rate)) / period).toFixed(2);
+    document.getElementById('paev_vznos').value = (paev_vz).toFixed(0);
+    let num_mes = 1
+    let summa_platega = egem_chlens_vzn + paev_vz
+
+    // Ипотека
+    let credit = Math.pow((1 + (percent_mortgage / 1200)) ,period)
+    let total = ((summary_credit * (percent_mortgage / 1200) * credit / (credit - 1)) * period) - summary_credit;
+    document.getElementById('percent_mortgage').value = (total).toFixed(0);
+
+    if (rate !== 0) {
+        for (let i = 0; i < period; i++) {
+            str += `<tr><td>${num_mes++}</td><td>${summary_credit.toFixed(0)}</td>`;
+            summary_credit -= paev_vz;
+            str += `<td>${egem_chlens_vzn}</td><td>${paev_vz.toFixed(0)}</td><td>${summa_platega.toFixed(0)}</td></tr>`;
+        }
+        str += "</table>";
+        table.innerHTML = str;
+    } else {
+        $("div.table").empty()
+        document.getElementById('percent_mortgage').value = ('зависит от срока накопления');
+        document.getElementById('paev_vznos').value = (min_payment);
+    }
+    }
+  });
+});
+
+// На печать
+function CallPrint(strid) {
+  let prtContent = document.getElementById(strid);
+  let WinPrint = window.open('','','left=50,top=50,width=800,height=640,toolbar=0,scrollbars=1,status=0');
+  WinPrint.document.write('');
+  WinPrint.document.write(prtContent.innerHTML);
+  WinPrint.document.write('');
+  WinPrint.document.close();
+  WinPrint.focus();
+  WinPrint.print();
+  WinPrint.close();
+  {#prtContent.innerHTML=strOldOne;#}
+}
+   </script>
 	{% endblock content %}

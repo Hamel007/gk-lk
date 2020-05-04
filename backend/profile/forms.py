@@ -1,6 +1,6 @@
 from django import forms
 
-from backend.profile.models import Profile
+from backend.profile.models import Profile, AddressRegistration, AddressActual
 
 
 class UserSignUpForm(forms.ModelForm):
@@ -27,3 +27,16 @@ class UserSignUpForm(forms.ModelForm):
         #         print(profile)
         profile.save()
         # user.save()
+
+
+class UpdateAddressRegistration(forms.ModelForm):
+    class Meta:
+        model = AddressRegistration
+        fields = ['street']
+
+
+class UpdateAddressFact(forms.ModelForm):
+    class Meta:
+        model = AddressActual
+        fields = ['street']
+

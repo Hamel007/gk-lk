@@ -23,15 +23,15 @@
                 <tbody>
                     <tr>
                         <td>ФИО:</td>
-                        <td>{{ profile.full_name }}</td>
+                        <td>{{ user.profile.full_name }}</td>
                     </tr>
                     <tr>
                         <td>Мобильный:</td>
-                        <td>+79064644455 <a href="#" class="edit"></a></td>
+                        <td>{{ user.profile.phone }} <a href="#" class="edit"></a></td>
                     </tr>
                     <tr>
                         <td>E-mail:</td>
-                        <td>admin@mail.ru</td>
+                        <td>{{ user.profile.email }}</td>
                     </tr>
                     <tr>
                         <td>Номер счета:</td>
@@ -219,6 +219,13 @@
                     </tr>
                 </tbody>
             </table>
+            <form action="/create/" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input name="street">
+                <input name="profile" value="{{ profile.id }}">
+                <input type="submit" value="Сохранить" class="savebut">
+            </form>
             <input type="button" value="Сохранить" class="savebut">
             <div class="info"><img src="img/information.svg" alt="">Изменения сохранены</div>
             <div class="error"><img src="img/error.svg" alt="">Ошибка сохранения. Обратитесь в <a href="#">поддержку</a></div>

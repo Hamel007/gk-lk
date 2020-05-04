@@ -1,6 +1,13 @@
 {% load link_tags %}
 <nav>
     <ul>
+        {% url 'all_user' as all_user %}
+        {% url 'all_verification' as all_verification %}
+        {% url 'all_payment' as all_payment %}
+        {% url 'all_support' as all_support %}
+    {% if perms.profile.views_profile %}
+        <li {% if all_user|active:request or all_verification|active:request or all_payment|active:request or all_support|active:request %} class="active" {% endif %}><a href="{% url 'all_user' %}">Администрирование</a></li>
+    {% endif %}
         {% url 'members_list' as members_list %}
         {% url 'partner_list' as partner_list %}
         {% url 'turn_list' as turn_list %}
@@ -37,7 +44,7 @@
             </ul>
         </li>
     {% endif %}
-        {% url 'profile' as profile %}
+        {% url 'profile'  as profile %}
         <li {% if profile|active:request %} class="active" {% endif %}><a href="{% url 'profile' %}">Профиль</a></li>
 
     {% if perms.profile.views_profile %}

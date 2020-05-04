@@ -60,14 +60,14 @@ class Profile(models.Model):
 
 class AbstractAddressModel(models.Model):
     """Абстрактная модель адреса"""
-    country = models.CharField("Страна", max_length=50)
-    region = models.CharField("Регион", max_length=50)
-    city = models.CharField("Город", max_length=50)
-    street = models.CharField("Улица", max_length=50)
-    house = models.IntegerField("Дом")
-    corpus = models.CharField("Корпус", max_length=50)
-    flat = models.IntegerField("Квартира")
-    index = models.IntegerField("Индекс")
+    country = models.CharField("Страна", max_length=50, blank=True, null=True)
+    region = models.CharField("Регион", max_length=50, blank=True, null=True)
+    city = models.CharField("Город", max_length=50, blank=True, null=True)
+    street = models.CharField("Улица", max_length=50, blank=True, null=True)
+    house = models.IntegerField("Дом", blank=True, null=True)
+    corpus = models.CharField("Корпус", max_length=50, blank=True, null=True)
+    flat = models.IntegerField("Квартира", blank=True, null=True)
+    index = models.IntegerField("Индекс", blank=True, null=True)
 
     class Meta:
         verbose_name = "Адрес"
@@ -77,7 +77,7 @@ class AbstractAddressModel(models.Model):
 
 class AddressRegistration(AbstractAddressModel):
     """Адрес регистрации"""
-    reg_name = models.OneToOneField(Profile,
+    reg_name = models.OneToOneField(User,
                                     verbose_name="Адрес регистрации",
                                     blank=True,
                                     on_delete=models.CASCADE)
@@ -92,7 +92,7 @@ class AddressRegistration(AbstractAddressModel):
 
 class AddressActual(AbstractAddressModel):
     """Адрес фактического проживания"""
-    act_name = models.OneToOneField(Profile,
+    act_name = models.OneToOneField(User,
                                     verbose_name="Адрес фактического проживания",
                                     blank=True,
                                     on_delete=models.CASCADE)
@@ -107,7 +107,7 @@ class AddressActual(AbstractAddressModel):
 
 class AddressPost(AbstractAddressModel):
     """Почтовый адрес для связи"""
-    post_name = models.OneToOneField(Profile,
+    post_name = models.OneToOneField(User,
                                      verbose_name="Почтовый адрес для связи",
                                      blank=True,
                                      on_delete=models.CASCADE)

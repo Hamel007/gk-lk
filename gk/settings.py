@@ -29,6 +29,7 @@ INSTALLED_APPS = [
 
     'backend.profile',
     'backend.news',
+    'backend.calculator',
 ]
 
 MIDDLEWARE = [
@@ -116,7 +117,7 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-LOGIN_REDIRECT_URL = 'profile'
+LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
 ACCOUNT_SIGNUP_FORM_CLASS = 'backend.profile.forms.UserSignUpForm'
 ACCOUNT_EMAIL_REQUIRED = True

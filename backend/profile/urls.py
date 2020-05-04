@@ -3,7 +3,7 @@ from django.urls import path
 from backend.profile import views
 
 urlpatterns = [
-    path("", views.MembersCollective.as_view(), name="members_list"),
+    path("turn/", views.MembersCollective.as_view(), name="members_list"),
     path("partner/", views.PartnerCollective.as_view(), name="partner_list"),
     path("queue/", views.Turn.as_view(), name="turn_list"),
     path("deal/", views.Deal.as_view(), name="deal_list"),
@@ -21,12 +21,17 @@ urlpatterns = [
     path("sample/", views.SampleDocView.as_view(), name="sample"),
     path("instructions/", views.InstructionView.as_view(), name="instructions"),
 
-    path("profile/", views.ProfileView.as_view(), name="profile"),
+    path("", views.ProfileView.as_view(), name="profile"),
+    path("create/", views.CreateAddress.as_view(), name="create"),
+    # path("", views.edit, name="profile"),
 
     path("hierarchy/", views.HierarchyView.as_view(), name="hierarchy"),
     path("invitation/", views.LinkInvitationView.as_view(), name="invitation"),
 
     path("support/", views.SupportView.as_view(), name="support"),
 
-    path("calculator/", views.CalculatorView.as_view(), name="calculator"),
+    path("all_user/", views.AdminAllUserView.as_view(), name="all_user"),
+    path("all_verification/", views.AdminAllVerificationView.as_view(), name="all_verification"),
+    path("all_payment/", views.AdminAllPaymentView.as_view(), name="all_payment"),
+    path("all_support/", views.AdminAllSupportView.as_view(), name="all_support"),
 ]
