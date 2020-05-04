@@ -1,13 +1,3 @@
-# from datetime import timedelta, datetime
-#
-# from django.contrib.auth.mixins import LoginRequiredMixin
-# from django.http import HttpResponse, Http404
-#
-# from django.db.models import Q, F
-# from django.urls import reverse_lazy
-# from django.views.generic.dates import BaseDateListView
-#
-# from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, View
 
