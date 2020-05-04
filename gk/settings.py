@@ -26,8 +26,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'backend.profile',
+    # 'backend.profile',
     'backend.news',
+    'backend.feedback',
 ]
 
 MIDDLEWARE = [

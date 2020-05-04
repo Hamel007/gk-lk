@@ -40,4 +40,4 @@ class Post(models.Model):
         return reverse("single_post", kwargs={"slug": self.slug})
 
     def __str__(self):
-        return f"title"
+        return self.title

@@ -1,0 +1,30 @@
+{#{% extends 'base.html' %}#}
+{% load static %}
+
+
+<div class="table">
+    <table>
+        <thead>
+        <tr>
+            <td>Заголовок вопроса</td>
+            <td>Содержание вопроса</td>
+            <td>Дата</td>
+            <td>Ответ</td>
+        </tr>
+        </thead>
+        {% for relation in relations %}
+            <tbody>
+            <tr>
+                <td>{{ relation.title }}</td>
+                <td>{{ relation.text }}</td>
+                <td>{{ relation.date }}</td>
+                {% if relation.processing == True %}
+                    <td style="max-width:300px;"><span style="color:green">Обработано</span></td>
+                {% else %}
+                    <td style="max-width:300px;"><span style="color:blue">В обработке</span></td>
+                {% endif %}
+            </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+</div>
