@@ -1,0 +1,8 @@
+{% load link_tags %}
+
+<ul class="pages-menu">
+    {% url 'documents' as documents %}
+    <li {% if documents|active:request %} class="active" {% endif %}><a href="{% url 'documents' %}">Документы</a></li>
+    {% url 'sample' as sample %}
+    <li {% if sample|active:request %} class="active" {% endif %}><a href="{% url 'sample' %}">Шаблоны и образцы</a></li>
+</ul>

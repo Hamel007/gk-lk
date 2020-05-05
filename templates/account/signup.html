@@ -1,0 +1,57 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<h1>{% trans "Sign Up" %}</h1>
+
+<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+{#<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">#}
+{#  {% csrf_token %}#}
+{#  {{ form.as_p }}#}
+{#  {% if redirect_field_value %}#}
+{#  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />#}
+{#  {% endif %}#}
+{#  <button class="savebut" type="submit">{% trans "Sign Up" %} &raquo;</button>#}
+{#</form>#}
+        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+        {% csrf_token %}
+{#        <br>#}
+        <span>Вас пригласил: Иванов Андрей Аркадьевич</span><br>
+        <input {% if form.full_name.errors %} style="border: 1px solid red;" {% endif %} type="text" name="full_name" id="id_full_name" placeholder="ФИО">
+        <label>Дата рождения:</label>
+        <input {% if form.birthday.errors %} style="border: 1px solid red;" {% endif %} type="date" name="birthday" id="id_birthday" placeholder="Дата рождения">
+        <input {% if form.citizenship.errors %} style="border: 1px solid red;" {% endif %} type="text" name="citizenship" id="id_citizenship" placeholder="Гражданство">
+{#        <hr>#}
+        <input {% if form.email.errors %} style="border: 1px solid red;" {% endif %} type="email" name="email" placeholder="E-mail адрес" required="" id="id_email">
+        <input {% if form.email.errors %} style="border: 1px solid red;" {% endif %} type="password" name="password1" placeholder="Пароль" required="" id="id_password1">
+        <input {% if form.password2.errors %} style="border: 1px solid red;" {% endif %} type="password" name="password2" placeholder="Пароль (ещё раз)" required="" id="id_password2">
+        <hr>
+        <input {% if form.phone.errors %} style="border: 1px solid red;" {% endif %} type="text" name="phone" placeholder="Телефон" maxlength="12" id="id_phone">
+        <input {% if form.cost_housing.errors %} style="border: 1px solid red;" {% endif %} type="text" name="cost_housing" id="id_cost_housing" placeholder="Стоимость жилья">
+        <input {% if form.passport.errors %} style="border: 1px solid red;" {% endif %} type="text" name="passport" id="id_passport" placeholder="Серия и номер паспорта">
+        <input {% if form.by_passport.errors %} style="border: 1px solid red;" {% endif %} type="text" name="by_passport" id="id_by_passport" placeholder="Кем выдан">
+        <label>Дата выдачи:</label>
+        <input {% if form.date_passport.errors %} style="border: 1px solid red;" {% endif %} type="date" name="date_passport" id="id_date_passport" placeholder="Дата выдачи">
+        <input {% if form.region_purchase.errors %} style="border: 1px solid red;" {% endif %}type="text" name="region_purchase" id="id_region_purchase" placeholder="Регион приобретения объекта недвижимости">
+        <button class="savebut" type="submit">Регистрация</button>
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-error">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div class="alert alert-error">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
+    </form>
+
+{% endblock %}

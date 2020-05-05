@@ -4,6 +4,14 @@
 
 ### Dima ###
 prod_settings.py
+venv
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
+*backend/*/migrations/*
+!*backend/*/migrations
+!*backend/*/migrations/__init__.py
+test.py
 
 ### Django ###
 */migrations/*

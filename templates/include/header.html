@@ -1,4 +1,4 @@
-{% load static user_tags %}
+{% load static %}
 <header>
     <div class="const">
         <div class="logo">
@@ -6,7 +6,7 @@
         </div>
         <div class="head-info">
             {% if user.is_authenticated %}
-                <span>{{ user }}</span><br>
+                <span>{{ user.profile.full_name }}</span><br>
                 {{ user.profile.number_user }}
         </div>
         <div class="head-info">
@@ -14,7 +14,7 @@
             Статус: <b>кандидат в пайщики</b>
             {% endif %}
         </div>
-        <a href="" class="exit-link">
+        <a href="{% url 'account_logout' %}" class="exit-link">
             <svg xmlns="http://www.w3.org/2000/svg" height="512px" viewBox="0 -10 490.66667 490" width="512px">
                 <g>
                     <path
@@ -32,12 +32,3 @@
         </a>
     </div>
 </header>
-<!-- Меню и заголовок для мобилы -->
-<div class="const mobile-nav">
-    <a href="javascript:;" class="menu-open"></a>
-    <h1>
-        Новости
-        <!-- Дублировал для мобильной версии -->
-    </h1>
-</div>
-<!-- /Меню и заголовок для мобилы -->

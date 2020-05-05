@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block mobile %}
+	<!-- Меню и заголовок для мобилы -->
+	<div class="const mobile-nav">
+		<a href="javascript:;" class="menu-open"></a>
+		<h1>
+			Верификация  <!-- Дублировал для мобильной версии -->
+		</h1>
+	</div>
+	<!-- /Меню и заголовок для мобилы -->
+{% endblock mobile %}
+
+
+{% block content %}
+			<div class="content">
+				<h1>
+					Верификация
+				</h1>
+
+				{% include 'include/admin_menu.html' %}
+
+<div class="content-body">
+	<a href="https://gendocs.ru/gendocs/docs/39/38451/conv_1/file1_html_mcbe73d0.jpg" target="_blank">Открыть в новом окне</a>
+
+	<!--Если файл-картинка, то можно показать превью-->
+	<img src="https://gendocs.ru/gendocs/docs/39/38451/conv_1/file1_html_mcbe73d0.jpg" alt="" class="verif-img">
+
+	<form action="">
+		<label>Комментарий</label>
+		<!--Если нажали кнопку сообщить об ошибке, комментарий подставляется в поле "Статус" на странице документов у пользователя. Если нажали верифицировать, то в статус добавляется подобное "Проверен. 12:00 25.08.2020"-->
+		<textarea name="" id="" cols="30" rows="10"></textarea>
+		<input type="button" value="Верифицировать" class="savebut" style="margin-right:20px"><input type="button" value="Сообщить об ошибке" class="erorbut">
+	</form>
+
+				</div>
+
+			</div>
+{% endblock content %}

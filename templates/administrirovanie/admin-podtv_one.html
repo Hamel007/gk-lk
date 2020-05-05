@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block mobile %}
+	<!-- Меню и заголовок для мобилы -->
+	<div class="const mobile-nav">
+		<a href="javascript:;" class="menu-open"></a>
+		<h1>
+			Подтверждение платежа  <!-- Дублировал для мобильной версии -->
+		</h1>
+	</div>
+	<!-- /Меню и заголовок для мобилы -->
+{% endblock mobile %}
+
+
+{% block content %}
+			<div class="content">
+				<h1>
+					Подтверждение платежа
+				</h1>
+
+				{% include 'include/admin_menu.html' %}
+
+<div class="content-body">
+	<a href="https://opt-1334847.ssl.1c-bitrix-cdn.ru/upload/medialibrary/0b8/0b8d761e41dfa8e9439f6ecd214f0946.JPG" target="_blank">Открыть чек в новом окне</a>
+
+	<img src="https://opt-1334847.ssl.1c-bitrix-cdn.ru/upload/medialibrary/0b8/0b8d761e41dfa8e9439f6ecd214f0946.JPG" alt="" class="verif-img">
+
+	<form action="">
+		<label>Комментарий</label>
+		<!--Если нажали кнопку сообщить об ошибке, комментарий подставляется в поле "Статус" на странице платежей у пользователя. Если нажали подтвердить, то в статус добавляется подобное "Подтвержден. 12:00 25.08.2020"-->
+		<textarea name="" id="" cols="30" rows="10"></textarea>
+		<input type="button" value="Подтвердить" class="savebut" style="margin-right:20px"><input type="button" value="Сообщить об ошибке" class="erorbut">
+	</form>
+
+				</div>
+
+			</div>
+{% endblock content %}

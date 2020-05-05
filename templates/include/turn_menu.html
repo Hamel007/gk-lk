@@ -1,11 +1,16 @@
-<h1>
-    Члены кооператива
-</h1>
+{% load link_tags %}
+
 <ul class="pages-menu">
-    <li class="active"><a href="{% url 'members_list' %}">Члены кооператива</a></li>
-    <li><a href="{% url 'partner_list' %}">Пайщики кооператива</a></li>
-    <li><a href="{% url 'turn_list' %}">Очередь</a></li>
-    <li><a href="{% url 'deal_list' %}">В процессе сделки</a></li>
-    <li><a href="{% url 'calculated_list' %}">Полностью рассчитанные</a></li>
-    <li><a href="{% url 'debtor_list' %}">Должники</a></li>
+    {% url 'members_list' as members_list %}
+    <li {% if members_list|active:request %} class="active" {% endif %}><a href="{% url 'members_list' %}">Члены кооператива</a></li>
+    {% url 'partner_list' as partner_list %}
+    <li {% if partner_list|active:request %} class="active" {% endif %}><a href="{% url 'partner_list' %}">Пайщики кооператива</a></li>
+    {% url 'turn_list' as turn_list %}
+    <li {% if turn_list|active:request %} class="active" {% endif %}><a href="{% url 'turn_list' %}">Очередь</a></li>
+    {% url 'deal_list' as deal_list %}
+    <li {% if deal_list|active:request %} class="active" {% endif %}><a href="{% url 'deal_list' %}">В процессе сделки</a></li>
+    {% url 'calculated_list' as calculated_list %}
+    <li {% if calculated_list|active:request %} class="active" {% endif %}><a href="{% url 'calculated_list' %}">Полностью рассчитанные</a></li>
+    {% url 'debtor_list' as debtor_list %}
+    <li {% if debtor_list|active:request %} class="active" {% endif %}><a href="{% url 'debtor_list' %}">Должники</a></li>
 </ul>

@@ -502,6 +502,67 @@ background: #9fd356;
 cursor: pointer;
 }
 
+.erorbut{
+	background: tomato;
+	color:#fff;
+	padding:10px 18px;
+	display: inline-block;
+	margin-top: 20px;
+	border-radius: 4px;
+	outline: none;
+	transition: 0.2s;
+	cursor: pointer;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.verif-img{
+	max-width: 50%;
+	height: auto;
+	border:1px solid #efefef;
+	display: block;
+	margin:15px 0;
+	border-radius: 4px;
+}
+
+.erorbut:hover{
+background: #9fd356;
+cursor: pointer;
+}
+
+.searchbut{
+	background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMi4wMDUgNTEyLjAwNSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyLjAwNSA1MTIuMDA1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiBjbGFzcz0iIj48Zz48Zz4KCTxnPgoJCTxwYXRoIGQ9Ik01MDUuNzQ5LDQ3NS41ODdsLTE0NS42LTE0NS42YzI4LjIwMy0zNC44MzcsNDUuMTg0LTc5LjEwNCw0NS4xODQtMTI3LjMxN2MwLTExMS43NDQtOTAuOTIzLTIwMi42NjctMjAyLjY2Ny0yMDIuNjY3ICAgIFMwLDkwLjkyNSwwLDIwMi42NjlzOTAuOTIzLDIwMi42NjcsMjAyLjY2NywyMDIuNjY3YzQ4LjIxMywwLDkyLjQ4LTE2Ljk4MSwxMjcuMzE3LTQ1LjE4NGwxNDUuNiwxNDUuNiAgICBjNC4xNiw0LjE2LDkuNjIxLDYuMjUxLDE1LjA4Myw2LjI1MXMxMC45MjMtMi4wOTEsMTUuMDgzLTYuMjUxQzUxNC4wOTEsNDk3LjQxMSw1MTQuMDkxLDQ4My45MjgsNTA1Ljc0OSw0NzUuNTg3eiAgICAgTTIwMi42NjcsMzYyLjY2OWMtODguMjM1LDAtMTYwLTcxLjc2NS0xNjAtMTYwczcxLjc2NS0xNjAsMTYwLTE2MHMxNjAsNzEuNzY1LDE2MCwxNjBTMjkwLjkwMSwzNjIuNjY5LDIwMi42NjcsMzYyLjY2OXoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiMwMDAwMDAiIGZpbGw9IiNGRkZGRkYiLz4KCTwvZz4KPC9nPjwvZz4gPC9zdmc+Cg==")  #1e73be;
+	color:#fff;
+	height: 38px;
+	width: 50px;
+	display: inline-block;
+	border-radius: 4px;
+	outline: none;
+	transition: 0.2s;
+	cursor: pointer;
+	display: inline-block;
+	text-decoration: none;
+background-position: 50% 50%;
+background-size: 16px;
+background-repeat: no-repeat;
+}
+
+.searchbut:hover{
+	background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMi4wMDUgNTEyLjAwNSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyLjAwNSA1MTIuMDA1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiBjbGFzcz0iIj48Zz48Zz4KCTxnPgoJCTxwYXRoIGQ9Ik01MDUuNzQ5LDQ3NS41ODdsLTE0NS42LTE0NS42YzI4LjIwMy0zNC44MzcsNDUuMTg0LTc5LjEwNCw0NS4xODQtMTI3LjMxN2MwLTExMS43NDQtOTAuOTIzLTIwMi42NjctMjAyLjY2Ny0yMDIuNjY3ICAgIFMwLDkwLjkyNSwwLDIwMi42NjlzOTAuOTIzLDIwMi42NjcsMjAyLjY2NywyMDIuNjY3YzQ4LjIxMywwLDkyLjQ4LTE2Ljk4MSwxMjcuMzE3LTQ1LjE4NGwxNDUuNiwxNDUuNiAgICBjNC4xNiw0LjE2LDkuNjIxLDYuMjUxLDE1LjA4Myw2LjI1MXMxMC45MjMtMi4wOTEsMTUuMDgzLTYuMjUxQzUxNC4wOTEsNDk3LjQxMSw1MTQuMDkxLDQ4My45MjgsNTA1Ljc0OSw0NzUuNTg3eiAgICAgTTIwMi42NjcsMzYyLjY2OWMtODguMjM1LDAtMTYwLTcxLjc2NS0xNjAtMTYwczcxLjc2NS0xNjAsMTYwLTE2MHMxNjAsNzEuNzY1LDE2MCwxNjBTMjkwLjkwMSwzNjIuNjY5LDIwMi42NjcsMzYyLjY2OXoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiMwMDAwMDAiIGZpbGw9IiNGRkZGRkYiLz4KCTwvZz4KPC9nPjwvZz4gPC9zdmc+Cg==") #9fd356;
+cursor: pointer;
+background-position: 50% 50%;
+background-size: 16px;
+background-repeat: no-repeat;
+}
+
+.search-inp{
+	display: flex;
+}
+
+.search-inp input[type="text"]{
+	margin-bottom: 0 !important;
+}
+
 .info, .error{
 	background: #efefef;
 	padding:15px 20px;
@@ -608,13 +669,13 @@ a.platez.c1{
 	background: #56ab2f;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	
+
 }
 
 a.platez.c2{
 	background: #F2994A;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #F2C94C, #F2994A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */	
+	background: linear-gradient(to right, #F2C94C, #F2994A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	}
 
 .content-body input[type=text], .content-body input[type=date], .content-body input[type=password], .content-body input[type=number]{
@@ -855,7 +916,7 @@ text-align: center;
 	margin-right: 20px;
 }
 
-.news-block h2{
+h2, .news-block h2{
 	font-size: 20px;
 	color:#333;
 	margin-bottom: 10px;

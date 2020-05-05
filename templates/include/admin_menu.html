@@ -1,0 +1,12 @@
+{% load link_tags %}
+
+<ul class="pages-menu">
+    {% url 'all_user' as all_user %}
+    <li {% if all_user|active:request %} class="active" {% endif %}><a href="{% url 'all_user' %}">Все члены кооператива</a></li>
+    {% url 'all_verification' as all_verification %}
+    <li {% if all_verification|active:request %} class="active" {% endif %}><a href="{% url 'all_verification' %}">Ожидающие верификацию</a></li>
+    {% url 'all_payment' as all_payment %}
+    <li {% if all_payment|active:request %} class="active" {% endif %}><a href="{% url 'all_payment' %}">Подтверждение платежей</a></li>
+    {% url 'all_support' as all_support %}
+    <li {% if all_support|active:request %} class="active" {% endif %}><a href="{% url 'all_support' %}">Техподдержка</a></li>
+</ul>

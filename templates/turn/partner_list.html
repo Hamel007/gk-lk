@@ -1,10 +1,24 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block mobile %}
+    <!-- Меню и заголовок для мобилы -->
+    <div class="const mobile-nav">
+        <a href="javascript:;" class="menu-open"></a>
+        <h1>
+            Пайщики кооператива
+            <!-- Дублировал для мобильной версии -->
+        </h1>
+    </div>
+<!-- /Меню и заголовок для мобилы -->
+{% endblock mobile %}
+
 {% block content %}
 
     <div class="content">
-
+    <h1>
+        Пайщики кооператива
+    </h1>
         {% include 'include/turn_menu.html' %}
 
         <div class="content-body">
@@ -37,14 +51,8 @@
                 {% endfor %}
             </table>
         </div>
-        <div class="paginator">
-            <a href="" class="page-prev"></a>
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="" class="active">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href="" class="page-next"></a>
-        </div>
+
+        {% include "include/pagination.html" %}
+
     </div>
 {% endblock %}

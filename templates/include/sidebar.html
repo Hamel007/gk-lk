@@ -1,32 +1,69 @@
+{% load link_tags %}
 <nav>
     <ul>
-        <li><a href="{% url 'members_list' %}">Очередь</a></li>
+        {% url 'all_user' as all_user %}
+        {% url 'all_verification' as all_verification %}
+        {% url 'all_payment' as all_payment %}
+        {% url 'all_support' as all_support %}
+    {% if perms.profile.views_profile %}
+        <li {% if all_user|active:request or all_verification|active:request or all_payment|active:request or all_support|active:request %} class="active" {% endif %}><a href="{% url 'all_user' %}">Администрирование</a></li>
+    {% endif %}
+        {% url 'members_list' as members_list %}
+        {% url 'partner_list' as partner_list %}
+        {% url 'turn_list' as turn_list %}
+        {% url 'deal_list' as deal_list %}
+        {% url 'calculated_list' as calculated_list %}
+        {% url 'debtor_list' as debtor_list %}
+    {% if perms.profile.views_profile %}
+        <li {% if members_list|active:request or partner_list|active:request or turn_list|active:request or deal_list|active:request or calculated_list|active:request or debtor_list|active:request %} class="active" {% endif %}><a href="{% url 'members_list' %}">Очередь</a></li>
+    {% endif %}
         <li>
             <a href="javascript:;" class="mainitem">Документы<span class="dropdown"></span></a>
             <ul>
-                <li><a href="">Верификация документов</a></li>
-                <li><a href="">Документы</a></li>
-                <li><a href="">Инструкции</a></li>
+                {% url 'verification' as verification %}
+                {% url 'photo_verif' as photo_verif %}
+                <li {% if verification|active:request or photo_verif|active:request %} class="active" {% endif %}><a href="{% url 'verification' %}">Верификация документов</a></li>
+                {% url 'documents' as documents %}
+                {% url 'sample' as sample %}
+                <li {% if documents|active:request or sample|active:request %} class="active" {% endif %}><a href="{% url 'documents' %}">Документы</a></li>
+                {% url 'instructions' as instructions %}
+                <li {% if instructions|active:request %} class="active" {% endif %}><a href="{% url 'instructions' %}">Инструкции</a></li>
             </ul>
         </li>
+    {% if perms.profile.views_profile %}
         <li>
             <a href="javascript:;" class="mainitem">Взносы<span class="dropdown"></span></a>
             <ul>
-                <li><a href="">Внести платеж</a></li>
+                {% url 'entrance_fee' as entrance_fee %}
+                {% url 'share_premium' as share_premium %}
+                {% url 'confirm_payment' as confirm_payment %}
+                <li {% if entrance_fee|active:request or share_premium|active:request or confirm_payment|active:request %} class="active" {% endif %}><a href="{% url 'entrance_fee' %}">Внести платеж</a></li>
                 <li><a href="">График платежей</a></li>
-                <li><a href="">История платежей</a></li>
+                {% url 'history_payment' as history_payment %}
+                <li {% if history_payment|active:request %} class="active" {% endif %}><a href="{% url 'history_payment' %}">История платежей</a></li>
             </ul>
         </li>
-        <li><a href="">Профиль</a></li>
+    {% endif %}
+        {% url 'profile'  as profile %}
+        <li {% if profile|active:request %} class="active" {% endif %}><a href="{% url 'profile' %}">Профиль</a></li>
+
+    {% if perms.profile.views_profile %}
         <li>
             <a href="javascript:;" class="mainitem">Распространение<span class="dropdown"></span></a>
             <ul>
-                <li><a href="">Ссылки для приглашения</a></li>
-                <li><a href="">Иерархия приглашений</a></li>
+                {% url 'invitation' as invitation %}
+                <li {% if invitation|active:request %} class="active" {% endif %}><a href="{% url "invitation" %}">Ссылки для приглашения</a></li>
+                {% url 'hierarchy' as hierarchy %}
+                <li {% if hierarchy|active:request %} class="active" {% endif %}><a href="{% url "hierarchy" %}">Иерархия приглашений</a></li>
             </ul>
         </li>
-        <li><a href="{% url 'feedback:feedback' %}">Поддержка</a></li>
-        <li><a href="">Калькулятор</a></li>
-        <li class="active"><a href="{% url 'news' %}">Новости</a></li>
+    {% endif %}
+        {% url 'support' as support %}
+        <li {% if support|active:request %} class="active" {% endif %}><a href="{% url 'feedback:feedback' %}">Поддержка</a></li>
+        {% url 'calculator' as calculator %}
+        <li {% if calculator|active:request %} class="active" {% endif %}><a href="{% url 'calculator' %}">Калькулятор</a></li>
+        {% url 'news' as news %}
+        {% url 'single_post' post.slug as single_post %}
+        <li {% if news|active:request or single_post|active:request %} class="active" {% endif %}><a href="{% url 'news' %}">Новости</a></li>
     </ul>
 </nav>
