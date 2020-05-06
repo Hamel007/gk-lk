@@ -16,6 +16,12 @@
 
     {% endblock mobile %}
 <main>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="error"><img src="{% static 'img/error.svg' %}" alt="">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
     <div class="const">
         {% include 'include/sidebar.html' %}
         {% block content %}

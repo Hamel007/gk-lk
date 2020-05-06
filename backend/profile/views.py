@@ -1,13 +1,15 @@
+from django.contrib import messages
 from django.contrib.auth import get_user
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView
 from django.views.generic.base import View
 
-from .forms import UpdateAddressRegistration, UpdateAddressFact
-from .models import Profile, AddressRegistration
+from .forms import UpdateAddressRegistrationForm, UpdateAddressActualForm
+from .models import Profile, AddressRegistration, AddressActual
 
 
 class Turn(PermissionRequiredMixin, ListView):
@@ -20,6 +22,11 @@ class Turn(PermissionRequiredMixin, ListView):
 
     def get_queryset(self):
         return Profile.objects.all()
+
+# class Pr(DetailView):
+#     """Очередь"""
+#     template_name = "profile/profil.html"
+#     model = Profile
 
 
 class MembersCollective(PermissionRequiredMixin, ListView):
@@ -85,25 +92,40 @@ class ProfileView(LoginRequiredMixin, DetailView):
 
 
 class CreateAddress(View):
+    """Создаем или обновляем адреса"""
+
     def post(self, request):
-        print(request.POST)
-        AddressRegistration.objects.update_or_create(id=request.user.id, street=request.POST.get("street"))
-        return HttpResponse(status=201)
+        if request.POST.get("submit_one"):
+            form_1 = UpdateAddressRegistrationForm(request.POST)
+            if form_1.is_valid():
+                obj, created = AddressRegistration.objects.update_or_create(
+                    reg_name=request.user, defaults={"country": request.POST.get('country'),
+                                                     "region": request.POST.get('region'),
+                                                     "city": request.POST.get('city'),
+                                                     "street": request.POST.get('street'),
+                                                     "house": str(request.POST.get('house')),
+                                                     "corpus": request.POST.get('corpus'),
+                                                     "flat": request.POST.get('flat'),
+                                                     "index": request.POST.get('index'),
+                                                     })
+                messages.success(self.request, f'Изменения сохранены')
+                return redirect('/')
 
-
-# def edit(request):
-#     if request.method == 'POST':
-#         registration_form = UpdateAddressRegistration(request.POST, instance=request.user.profile.addressregistration)
-#         actual_form = UpdateAddressFact(request.POST, instance=request.user.profile.addressactual)
-#         if registration_form.is_valid() and actual_form.is_valid():
-#             registration_form.save()
-#             actual_form.save()
-#             return redirect('profile')
-#     else:
-#         registration_form = UpdateAddressRegistration(instance=request.user.profile.addressregistration)
-#         actual_form = UpdateAddressFact()
-#         return render(request, 'profile/profil.html', {'registration_form': registration_form, 'actual_form': actual_form})
-
+        if request.POST.get("submit_two"):
+            form_2 = UpdateAddressActualForm(request.POST)
+            if form_2.is_valid():
+                obj, created = AddressActual.objects.update_or_create(
+                    act_name=request.user, defaults={"country": request.POST.get('country'),
+                                                     "region": request.POST.get('region'),
+                                                     "city": request.POST.get('city'),
+                                                     "street": request.POST.get('street'),
+                                                     "house": request.POST.get('house'),
+                                                     "corpus": request.POST.get('corpus'),
+                                                     "flat": request.POST.get('flat'),
+                                                     "index": request.POST.get('index'),
+                                                     })
+                messages.success(self.request, f'Изменения сохранены')
+                return redirect('/')
 
 
 # -? для теста

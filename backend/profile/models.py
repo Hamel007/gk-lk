@@ -63,7 +63,7 @@ class AbstractAddressModel(models.Model):
     country = models.CharField("Страна", max_length=50, blank=True, null=True)
     region = models.CharField("Регион", max_length=50, blank=True, null=True)
     city = models.CharField("Город", max_length=50, blank=True, null=True)
-    street = models.CharField("Улица", max_length=50, blank=True, null=True)
+    street = models.CharField("Улица", max_length=50, blank=True)
     house = models.IntegerField("Дом", blank=True, null=True)
     corpus = models.CharField("Корпус", max_length=50, blank=True, null=True)
     flat = models.IntegerField("Квартира", blank=True, null=True)

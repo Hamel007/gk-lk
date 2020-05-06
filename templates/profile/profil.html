@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block mobile %}
     <!-- Меню и заголовок для мобилы -->
@@ -19,6 +20,7 @@
         </h1>
         <div class="content-body">
             <table class="profile">
+                <tbody>
                 <thead><tr><td colspan="2">Персональные данные</td></tr></thead>
                 <tbody>
                     <tr>
@@ -44,140 +46,158 @@
 
                 </tbody>
                 <thead><tr><td colspan="2">Адресные данные</td></tr></thead>
-                <tbody>
+<form action="{% url "create" %}" method="post">
+{% csrf_token %}
                     <tr>
                         <td colspan="2"><h3>Адрес регистрации</h3></td>
                     </tr>
                     <tr>
                         <td>Страна:</td>
                         <td>
-                            <select name="" id="">
-                                <option value="">Выберите страну</option>
-                                <option value="">Россия</option>
-                                <option value="">Украина</option>
+
+                            {{ user.addressregistration.country }}
+
+                            <select name="country" id="">
+                                <option value="{{ user.addressregistration.country }}">Выберите страну</option>
+                                <option value="Россия">Россия</option>
+                                <option value="Украина">Украина</option>
                             </select>
+
                         </td>
                     </tr>
                     <tr>
                         <td>Регион:</td>
                         <td>
-                            <select name="" id="">
-                                <option value="">Выберите регион</option>
-                                <option value="">Россия</option>
-                                <option value="">Украина</option>
+                            {{ user.addressregistration.region }}
+                            <select name="region" id="">
+                                <option value="{{ user.addressregistration.region }}">Выберите регион</option>
+                                <option value="Россия">Россия</option>
+                                <option value="Украина">Украина</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>Город:</td>
                         <td>
-                            <select name="" id="">
-                                <option value="">Выберите город</option>
-                                <option value="">Россия</option>
-                                <option value="">Украина</option>
+                            {{ user.addressregistration.city }}
+                            <select name="city" id="">
+                                <option value="{{ user.addressregistration.city }}">Выберите город</option>
+                                <option value="Россия">Россия</option>
+                                <option value="Украина">Украина</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>Улица:</td>
                         <td>
-                            <input type="text" placeholder="Полное название улицы">
+                            <input type="text" name="street" placeholder="Полное название улицы" value="{{ user.addressregistration.street }}" required>
                         </td>
                     </tr>
                     <tr>
                         <td>Дом:</td>
                         <td>
-                            <input type="text" placeholder="Номер дома">
+                            <input type="text" name="house" placeholder="Номер дома" value="{{ user.addressregistration.house }}" required>
                         </td>
                     </tr>
                     <tr>
                         <td>Корпус:</td>
                         <td>
-                            <input type="text" placeholder="Если есть">
+                            <input type="text" name="corpus" placeholder="Если есть" value="{{ user.addressregistration.corpus }}" required>
                         </td>
                     </tr>
                     <tr>
                         <td>Квартира:</td>
                         <td>
-                            <input type="text" placeholder="Номер квартиры">
+                            <input type="text" name="flat" placeholder="Номер квартиры" value="{{ user.addressregistration.flat }}" required>
                         </td>
                     </tr>
                     <tr>
                         <td>Индекс:</td>
                         <td>
-                            <input type="text" placeholder="XXXXXX">
+                            <input type="text" name="index" placeholder="XXXXXX" value="{{ user.addressregistration.index }}" required>
                         </td>
                     </tr>
+                    <td>
+
+                        <input type="submit" name="submit_one" value="Сохранить" class="savebut">
+</td>
+</form>
+                <form action="{% url "create" %}" method="post">
+                {% csrf_token %}
                     <tr>
                         <td colspan="2"><h3>Адрес фактического проживания</h3></td>
                     </tr>
                     <tr>
                         <td>Страна:</td>
                         <td>
-                            <select name="" id="">
-                                <option value="">Выберите страну</option>
-                                <option value="">Россия</option>
-                                <option value="">Украина</option>
+                            {{ user.addressactual.country }}
+                            <select name="country" id="">
+                                <option value="{{ user.addressactual.country }}">Выберите страну</option>
+                                <option value="Россия">Россия</option>
+                                <option value="Украина">Украина</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>Регион:</td>
                         <td>
-                            <select name="" id="">
-                                <option value="">Выберите регион</option>
-                                <option value="">Россия</option>
-                                <option value="">Украина</option>
+                            {{ user.addressactual.region }}
+                            <select name="region" id="">
+                                <option value="{{ user.addressactual.region }}">Выберите регион</option>
+                                <option value="Россия">Россия</option>
+                                <option value="Украина">Украина</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>Город:</td>
                         <td>
-                            <select name="" id="">
-                                <option value="">Выберите город</option>
-                                <option value="">Россия</option>
-                                <option value="">Украина</option>
+                            {{ user.addressactual.city }}
+                            <select name="city" id="">
+                                <option value="{{ user.addressactual.city }}">Выберите город</option>
+                                <option value="Россия">Россия</option>
+                                <option value="Украина">Украина</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>Улица:</td>
                         <td>
-                            <input type="text" placeholder="Полное название улицы">
+                            <input type="text" name="street" placeholder="Полное название улицы" value="{{ user.addressactual.street }}" required>
                         </td>
                     </tr>
                     <tr>
                         <td>Дом:</td>
                         <td>
-                            <input type="text" placeholder="Номер дома">
+                            <input type="text" name="house" placeholder="Номер дома" value="{{ user.addressactual.house }}" required>
                         </td>
                     </tr>
                     <tr>
                         <td>Корпус:</td>
                         <td>
-                            <input type="text" placeholder="Если есть">
+                            <input type="text" name="corpus" placeholder="Если есть" value="{{ user.addressactual.corpus }}" required>
                         </td>
                     </tr>
                     <tr>
                         <td>Квартира:</td>
                         <td>
-                            <input type="text" placeholder="Номер квартиры">
+                            <input type="text" name="flat" placeholder="Номер квартиры" value="{{ user.addressactual.flat }}" required>
                         </td>
                     </tr>
                     <tr>
                         <td>Индекс:</td>
                         <td>
-                            <input type="text" placeholder="XXXXXX">
+                            <input type="text" name="index" placeholder="XXXXXX" value="{{ user.addressactual.index }}" required>
                         </td>
                     </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>
-                            ...
-                        </td>
-                    </tr>
+
+                    <td>
+                        <input type="submit" name="submit_two" value="Сохранить" class="savebut">
+                    </td>
+                    </form>
                 </tbody>
+
+
                 <thead><tr><td colspan="2">Анкета</td></tr></thead>
                 <tbody>
                     <tr>
@@ -202,7 +222,7 @@
                     <tr>
                         <td>Старый пароль:</td>
                         <td>
-                            <input type="password" name="" id="">
+                            <input type="password" id="">
                         </td>
                     </tr>
                     <tr>
@@ -219,16 +239,11 @@
                     </tr>
                 </tbody>
             </table>
-            <form action="/create/" method="post">
-                {% csrf_token %}
-                {{ form }}
-                <input name="street">
-                <input name="profile" value="{{ profile.id }}">
-                <input type="submit" value="Сохранить" class="savebut">
-            </form>
-            <input type="button" value="Сохранить" class="savebut">
-            <div class="info"><img src="img/information.svg" alt="">Изменения сохранены</div>
-            <div class="error"><img src="img/error.svg" alt="">Ошибка сохранения. Обратитесь в <a href="#">поддержку</a></div>
+
+{#            <input type="submit" value="Сохранить" class="savebut">#}
+
+{#                <div class="error"><img src="{% static 'img/information.svg' %}" alt="">{{ message }}</div>#}
+{#            <div class="error"><img src="img/error.svg" alt="">Ошибка сохранения. Обратитесь в <a href="#">поддержку</a></div>#}
         </div>
     </div>
 {% endblock content %}

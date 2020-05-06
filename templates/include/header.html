@@ -8,11 +8,16 @@
             {% if user.is_authenticated %}
                 <span>{{ user.profile.full_name }}</span><br>
                 {{ user.profile.number_user }}
+            {% endif %}
         </div>
         <div class="head-info">
-            <span>Внесено средств: 1 500 000₽</span><br>
-            Статус: <b>кандидат в пайщики</b>
+            {% if user.is_superuser %}
+                Статус: <b>администратор</b>
+            {% else %}
+                <span>Внесено средств: 1 500 000₽</span><br>
+                Статус: <b>кандидат в пайщики</b>
             {% endif %}
+
         </div>
         <a href="{% url 'account_logout' %}" class="exit-link">
             <svg xmlns="http://www.w3.org/2000/svg" height="512px" viewBox="0 -10 490.66667 490" width="512px">

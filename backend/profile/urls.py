@@ -23,6 +23,7 @@ urlpatterns = [
 
     path("", views.ProfileView.as_view(), name="profile"),
     path("create/", views.CreateAddress.as_view(), name="create"),
+    # path("create2/", views.CreateAddress.as_view(), name="create2"),
     # path("", views.edit, name="profile"),
 
     path("hierarchy/", views.HierarchyView.as_view(), name="hierarchy"),
@@ -34,4 +35,6 @@ urlpatterns = [
     path("all_verification/", views.AdminAllVerificationView.as_view(), name="all_verification"),
     path("all_payment/", views.AdminAllPaymentView.as_view(), name="all_payment"),
     path("all_support/", views.AdminAllSupportView.as_view(), name="all_support"),
+
+    # path("<int:pk>/", views.Pr.as_view(), name="all_support"),
 ]

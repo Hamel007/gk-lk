@@ -44,7 +44,7 @@
             </ul>
         </li>
     {% endif %}
-        {% url 'profile'  as profile %}
+        {% url 'profile' as profile %}
         <li {% if profile|active:request %} class="active" {% endif %}><a href="{% url 'profile' %}">Профиль</a></li>
 
     {% if perms.profile.views_profile %}
