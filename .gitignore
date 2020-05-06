@@ -12,8 +12,7 @@ venv
 !*backend/*/migrations
 !*backend/*/migrations/__init__.py
 test.py
-calc1.js
-test1.html
+
 
 ### Django ###
 *.log
