@@ -21,7 +21,7 @@ urlpatterns = [
     path("sample/", views.SampleDocView.as_view(), name="sample"),
     path("instructions/", views.InstructionView.as_view(), name="instructions"),
 
-    path("", views.ProfileView.as_view(), name="profile"),
+
     path("create/", views.CreateAddress.as_view(), name="create"),
     # path("", views.edit, name="profile"),
 
@@ -34,4 +34,5 @@ urlpatterns = [
     path("all_verification/", views.AdminAllVerificationView.as_view(), name="all_verification"),
     path("all_payment/", views.AdminAllPaymentView.as_view(), name="all_payment"),
     path("all_support/", views.AdminAllSupportView.as_view(), name="all_support"),
+    path("", views.ProfileView.as_view(), name="profile"),
 ]

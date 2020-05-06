@@ -49,7 +49,9 @@
             </table>
         </div>
 
-        {% include "include/pagination.html" %}
+        {% if is_paginated %}
+            {% include 'include/pagination.html' %}
+        {% endif %}
 
     </div>
 {% endblock %}

@@ -10,15 +10,15 @@
             <!-- Дублировал для мобильной версии -->
         </h1>
     </div>
-<!-- /Меню и заголовок для мобилы -->
+    <!-- /Меню и заголовок для мобилы -->
 {% endblock mobile %}
 
 {% block content %}
 
     <div class="content">
-    <h1>
-        Полностью рассчитанные
-    </h1>
+        <h1>
+            Полностью рассчитанные
+        </h1>
         {% include 'include/turn_menu.html' %}
 
         <div class="content-body">
@@ -43,8 +43,8 @@
                 {% endfor %}
             </table>
         </div>
-
-        {% include "include/pagination.html" %}
-
+        {% if is_paginated %}
+            {% include 'include/pagination.html' %}
+        {% endif %}
     </div>
 {% endblock %}

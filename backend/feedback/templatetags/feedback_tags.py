@@ -6,6 +6,6 @@ register = template.Library()
 
 
 @register.inclusion_tag('include/feedback_tag.html')
-def feedback_list():
+def feedback_list(count):
     """Вывод списка обратных связей"""
-    return {"relations": Feedback.objects.all()}
+    return {"relations": Feedback.objects.all()[:count]}

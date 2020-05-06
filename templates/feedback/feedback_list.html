@@ -28,10 +28,14 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-{#                        <div class="info"><img src="{% static 'img/information.svg' %}" alt="">Отправлено в службу поддержки</div>#}
+            {#                        <div class="info"><img src="{% static 'img/information.svg' %}" alt="">Отправлено в службу поддержки</div>#}
             {#            <div class="error"><img src="{% static 'img/error.svg' %}" alt="">Ошибка отправки. Не заполнено содержание вопроса#}
             {#            </div>#}
-            {% feedback_list %}
+            {% feedback_list count=4 %}
+{#            {% paginate 20 entries %}#}
+{#            {% if count %}#}
+{#                {% include 'include/pagination.html' %}#}
+{#            {% endif %}#}
         </div>
     </div>
 {% endblock %}

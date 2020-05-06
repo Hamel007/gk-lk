@@ -11,7 +11,7 @@
             <!-- Дублировал для мобильной версии -->
         </h1>
     </div>
-<!-- /Меню и заголовок для мобилы -->
+    <!-- /Меню и заголовок для мобилы -->
 {% endblock mobile %}
 
 {% block content %}
@@ -21,7 +21,11 @@
         </h1>
         <div class="content-body">
             <div class="news-block-one">
-                <div class="news-img-one" style="background-image: url({{ post.image.url }});"></div>
+                {% if new.image %}
+                    <div class="news-img-one" style="background-image: url({{ new.image.url }});"></div>
+                {% else %}
+                    <div class="news-img-one" style="background-image: url(/static/img/s1200.jpeg);"></div>
+                {% endif %}
                 <div class="news-info">
                     {{ post.text|safe }}
                 </div>
