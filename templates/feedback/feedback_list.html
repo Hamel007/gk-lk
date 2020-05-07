@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static feedback_tags %}
+
+{% block content %}
+
+    <div class="content">
+        <h1>
+            Служба поддержки
+        </h1>
+
+        <div class="content-body">
+            <form method="POST" action="{% url 'feedback:create' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label>Заголовок вопроса:</label>
+                <input type="text" name="title" required placeholder="Макс. 50 символов"><br>
+                <label>Содержание вопроса:</label><br>
+                <textarea name="text" id="" required placeholder="А вот тут максимально подробно"></textarea>
+                <label>Приложите фото/скриншот:</label><br><br>
+                <div class="file-inp">
+                    <label><input type="file" name="image" required><span>Выберите файл</span></label>
+                </div>
+                <input type="submit" value="Отправить запрос" class="savebut">
+            </form>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <div class="info"><img src="{% static 'img/information.svg' %}" alt="">{{ message }}</div>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {#                        <div class="info"><img src="{% static 'img/information.svg' %}" alt="">Отправлено в службу поддержки</div>#}
+            {#            <div class="error"><img src="{% static 'img/error.svg' %}" alt="">Ошибка отправки. Не заполнено содержание вопроса#}
+            {#            </div>#}
+            {% feedback_list count=4 %}
+{#            {% paginate 20 entries %}#}
+{#            {% if count %}#}
+{#                {% include 'include/pagination.html' %}#}
+{#            {% endif %}#}
+        </div>
+    </div>
+{% endblock %}

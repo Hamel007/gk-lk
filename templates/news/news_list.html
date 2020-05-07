@@ -7,7 +7,11 @@
     {% for new in post_list %}
         <div class="content-body">
         <div class="news-block">
-            <div class="news-img" style="background-image: url({{ new.image.url }});"></div>
+            {% if new.image %}
+                <div class="news-img" style="background-image: url({{ new.image.url }});"></div>
+            {% else %}
+                <div class="news-img" style="background-image: url(/static/img/s1200.jpeg);"></div>
+            {% endif %}
             <div class="news-info">
                 <h2>{{ new.title }}</h2>
                 {{ new.mini_text|safe }}
@@ -15,14 +19,8 @@
             </div>
         </div>
     {% endfor %}
-    <div class="paginator">
-        <a href="" class="page-prev"></a>
-        <a href="">1</a>
-        <a href="">2</a>
-        <a href="" class="active">3</a>
-        <a href="">4</a>
-        <a href="">5</a>
-        <a href="" class="page-next"></a>
-    </div>
+    {% if is_paginated %}
+        {% include 'include/pagination.html' %}
+    {% endif %}
     </div>
 </div>

@@ -14,5 +14,6 @@ class CalculatorAdmin(admin.ModelAdmin):
     class Meta:
         model = Calculator
 
+
 admin.site.register(Calculator, CalculatorAdmin)
 

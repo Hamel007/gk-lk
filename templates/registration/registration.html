@@ -21,6 +21,7 @@
 			<div class="auth-block">
 				<h1>Регистрация в системе</h1>
 				<form action="">
+                    {% csrf_token %}
 					<span>Вас пригласил: Иванов Андрей Аркадьевич</span><br>
 					<input type="text" name="" id="" placeholder="ФИО">
 					<label>Дата рождения:</label>

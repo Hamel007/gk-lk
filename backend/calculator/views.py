@@ -27,5 +27,6 @@ def answer_me(request):
     mounth_vznos = diapazon.monthly_fee
     min_payment = diapazon.min_payment
     percent_mortgage = program_filter.percent_mortgage
-    return JsonResponse({'vstup_vznos': vstup_vznos, "mounth_vznos": mounth_vznos, "percent_mortgage": percent_mortgage, "min_payment": min_payment})
 
+    return JsonResponse({'vstup_vznos': vstup_vznos, "mounth_vznos": mounth_vznos, "percent_mortgage": percent_mortgage,
+                         "min_payment": min_payment})

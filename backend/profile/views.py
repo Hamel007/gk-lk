@@ -14,7 +14,7 @@ from .models import Profile, AddressRegistration, AddressActual
 
 class Turn(PermissionRequiredMixin, ListView):
     """Очередь"""
-    paginate_by = 1
+    paginate_by = 10
     template_name = "turn/turn_list.html"
     permission_required = "profile.view_profile"
     #login_url = '/profile/'
@@ -31,7 +31,7 @@ class Turn(PermissionRequiredMixin, ListView):
 
 class MembersCollective(PermissionRequiredMixin, ListView):
     """Члены кооператива"""
-    paginate_by = 1
+    paginate_by = 10
     template_name = "turn/members_list.html"
     permission_required = "profile.view_profile"
 
@@ -41,7 +41,7 @@ class MembersCollective(PermissionRequiredMixin, ListView):
 
 class PartnerCollective(PermissionRequiredMixin, ListView):
     """Пайщики кооператива"""
-    paginate_by = 1
+    paginate_by = 10
     template_name = "turn/partner_list.html"
     permission_required = "profile.view_profile"
 
@@ -51,7 +51,7 @@ class PartnerCollective(PermissionRequiredMixin, ListView):
 
 class Deal(PermissionRequiredMixin, ListView):
     """В процессе сделки"""
-    paginate_by = 1
+    paginate_by = 10
     template_name = "turn/deal_list.html"
     permission_required = "profile.view_profile"
 
@@ -61,7 +61,7 @@ class Deal(PermissionRequiredMixin, ListView):
 
 class Calculated(PermissionRequiredMixin, ListView):
     """Полностью рассчитанные"""
-    paginate_by = 1
+    paginate_by = 10
     template_name = "turn/calculated_list.html"
     permission_required = "profile.view_profile"
 
@@ -71,7 +71,7 @@ class Calculated(PermissionRequiredMixin, ListView):
 
 class Debtor(PermissionRequiredMixin, ListView):
     """Должники"""
-    paginate_by = 1
+    paginate_by = 10
     template_name = "turn/debtor_list.html"
     permission_required = "profile.view_profile"
 

@@ -59,7 +59,7 @@
         </li>
     {% endif %}
         {% url 'support' as support %}
-        <li {% if support|active:request %} class="active" {% endif %}><a href="{% url 'support' %}">Поддержка</a></li>
+        <li {% if support|active:request %} class="active" {% endif %}><a href="{% url 'feedback:feedback' %}">Поддержка</a></li>
         {% url 'calculator' as calculator %}
         <li {% if calculator|active:request %} class="active" {% endif %}><a href="{% url 'calculator' %}">Калькулятор</a></li>
         {% url 'news' as news %}
