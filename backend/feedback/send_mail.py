@@ -35,7 +35,7 @@ def send_mail_feedback(user):
     subject = 'Новый запрос в поддержку'
     message = 'Здравствуйте, пользователь {}, отправил запрос в поддержку'.format(user)
     try:
-        send_mail(subject, message, 'hamel_007@mail.ru', ['hamell1987@gmail.com'])
+        send_mail(subject, message, 'dimmoon@mail.ru', ['dimmoon@mail.ru'])
         return True
     except BadHeaderError:
         return False

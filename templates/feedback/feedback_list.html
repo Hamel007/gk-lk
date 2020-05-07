@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static feedback_tags %}
+{% load static %}
 
 {% block content %}
 
@@ -28,13 +28,39 @@
                     {% endfor %}
                 </ul>
             {% endif %}
+            <div class="table">
+                <table>
+                    <thead>
+                    <tr>
+                        <td>Заголовок вопроса</td>
+                        <td>Содержание вопроса</td>
+                        <td>Дата</td>
+                        <td>Ответ</td>
+                    </tr>
+                    </thead>
+                    {% for feedback in feedback_list %}
+                        <tbody>
+                        <tr>
+                            <td>{{ feedback.title }}</td>
+                            <td>{{ feedback.text }}</td>
+                            <td>{{ feedback.date }}</td>
+                            {% if feedback.processing == True %}
+                                <td style="max-width:300px;"><span style="color:green">Обработано</span></td>
+                            {% else %}
+                                <td style="max-width:300px;"><span style="color:blue">В обработке</span></td>
+                            {% endif %}
+                        </tr>
+                        </tbody>
+                    {% endfor %}
+                </table>
+            </div>
             {#                        <div class="info"><img src="{% static 'img/information.svg' %}" alt="">Отправлено в службу поддержки</div>#}
             {#            <div class="error"><img src="{% static 'img/error.svg' %}" alt="">Ошибка отправки. Не заполнено содержание вопроса#}
             {#            </div>#}
-            {% feedback_list count=4 %}
+{#            {% feedback_list count=4 %}#}
 {#            {% paginate 20 entries %}#}
 {#            {% if count %}#}
-{#                {% include 'include/pagination.html' %}#}
+            {% include 'include/pagination.html' %}
 {#            {% endif %}#}
         </div>
     </div>
