@@ -29,14 +29,14 @@ class UserSignUpForm(forms.ModelForm):
         # user.save()
 
 
-class UpdateAddressRegistration(forms.ModelForm):
+class UpdateAddressRegistrationForm(forms.ModelForm):
     class Meta:
         model = AddressRegistration
-        fields = ['street']
+        fields = ['country', 'region', 'city', 'street', 'house', 'corpus', 'flat', 'index']
 
 
-class UpdateAddressFact(forms.ModelForm):
+class UpdateAddressActualForm(forms.ModelForm):
     class Meta:
         model = AddressActual
-        fields = ['street']
+        fields = ['country', 'region', 'city', 'street', 'house', 'corpus', 'flat', 'index']
 

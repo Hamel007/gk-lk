@@ -44,8 +44,8 @@ class Feedback(models.Model):
         ordering = ["-date"]
 
 
-@receiver(post_save, sender=Feedback)
-def create_user_mess(sender, instance, created, **kwargs):
-    """Отправка сообщения на обратной связи на email"""
-    if created:
-        send_mail_feedback(instance.user)
+# @receiver(post_save, sender=Feedback)
+# def create_user_mess(sender, instance, created, **kwargs):
+#     """Отправка сообщения на обратной связи на email"""
+#     if created:
+#         send_mail_feedback(instance.user)

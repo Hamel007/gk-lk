@@ -13,6 +13,7 @@ venv
 !*backend/*/migrations/__init__.py
 test.py
 
+
 ### Django ###
 */migrations/*
 *.log

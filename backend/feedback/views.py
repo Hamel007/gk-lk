@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView
 
 from .models import Feedback
 from .forms import FeedbackForm
@@ -13,6 +13,25 @@ class FeedbackList(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return Feedback.objects.all()
+
+
+class FeedbackAdminList(LoginRequiredMixin, ListView):
+    """Список обратных связей"""
+    paginate_by = 6
+    template_name = "administrirovanie/admin-support.html"
+
+    def get_queryset(self):
+        return Feedback.objects.all()
+
+
+class FeedbackDetail(LoginRequiredMixin, DetailView):
+    """Запрос одного пользователя"""
+    model = Feedback
+    # template_name = 'feedback/support_detail.html'
+    context_object_name = 'single_support'
+
+    def get_queryset(self):
+        return Feedback.objects.filter(user_id=self.kwargs.get('pk'))
 
 
 class FeedbackCreate(LoginRequiredMixin, CreateView):
