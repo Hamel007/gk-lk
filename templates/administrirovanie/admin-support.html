@@ -22,9 +22,9 @@
 
 
         <div class="content-body">
-            <form action="" class="search-inp">
-                <input type="text" placeholder="Введите ФИО члена">
-                <input type="button" value="" class="searchbut">
+            <form method="get" action="{% url 'feedback:feedback_search' %}" class="search-inp">
+                <input type="text" placeholder="Введите ФИО члена" name="qus">
+                <input type="submit" value="" class="searchbut">
             </form>
 
 
@@ -44,7 +44,7 @@
                     {% for support in object_list %}
                         <tr>
                             <td>{{ support.user.username }}</td>
-                            <td>{{ support.user.date_joined }}</td>
+                            <td>{{ support }}</td>
                             <td>{{ support.title }}</td>
                             <td>{{ support.text }}</td>
                             {% if support.processing == False %}
@@ -52,7 +52,7 @@
                             {% else %}
                                 <td>Рассмотрено</td>
                             {% endif %}
-                            <td><a href="{% url 'feedback:feedback_single' pk=support.user_id %}">Посмотреть</a></td>
+                            <td><a href="{{ support.get_absolute_url }}">Посмотреть</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

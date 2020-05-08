@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static feedback_tags %}
+{% load static %}
 
 {% block mobile %}
     <!-- Меню и заголовок для мобилы -->
@@ -36,16 +36,19 @@
                     <tbody>
                     <tr>
                         <td>{{ single_support.user }}</td>
-                        <td>22.07.2020</td>
-                        <td>Помогите хелп</td>
-                        <td>Хотелось бы узнать как зарегистрировать домашнего питомца?</td>
-                        <td>В ожидании</td>
+                        <td>{{ single_support.date }}</td>
+                        <td>{{ single_support.title }}</td>
+                        <td>{{ single_support.text }}</td>
+                        {% if single_support.processing == False %}
+                            <td>В ожидании</td>
+                        {% else %}
+                            <td>Рассмотрено</td>
+                        {% endif %}
                     </tr>
                     </tbody>
                 </table>
             </div>
             <br><br>
-
             <form action="">
                 <label>Ответ</label>
                 <textarea name="" id="" cols="30" rows="10"></textarea>

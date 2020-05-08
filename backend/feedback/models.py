@@ -26,13 +26,13 @@ class Feedback(models.Model):
     text = models.TextField("Содержание вопроса", max_length=1000)
     image = models.ImageField("Фото/Скриншот", upload_to=get_path_img_feedback)
     date = models.DateField("Дата добавления", auto_now=True)
-    processing = models.BooleanField("В обработке?", default=False)
+    processing = models.BooleanField("Обработано?", default=False)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return f"/feedback"
+        return reverse("feedback:feedback_single", kwargs={"pk": self.id})
 
     # def save(self, *args, **kwargs):
     #     super().save(*args, **kwargs)

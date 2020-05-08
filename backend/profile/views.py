@@ -10,7 +10,7 @@ from django.views.generic.base import View
 
 from .forms import UpdateAddressRegistrationForm, UpdateAddressActualForm
 from .models import Profile, AddressRegistration, AddressActual
-from backend.feedback.models import Feedback
+
 
 class Turn(PermissionRequiredMixin, ListView):
     """Очередь"""
@@ -245,7 +245,7 @@ class AdminAllPaymentView(PermissionRequiredMixin, ListView):
 # -? для теста
 class AdminAllSupportView(PermissionRequiredMixin, ListView):
     """Админка техподдержка"""
-    model = Feedback
+    model = Profile
     template_name = "administrirovanie/admin-support.html"
     permission_required = "profile.view_profile"
 
