@@ -15,6 +15,7 @@ urlpatterns = [
     path("confirm_payment/", views.ConfirmPaymentView.as_view(), name="confirm_payment"),
     path("history_payment/", views.HistoryPaymentView.as_view(), name="history_payment"),
 
+    # path("verification/", views.ExemplarView.as_view(), name="verification"),
     path("verification/", views.VerificationDocView.as_view(), name="verification"),
     path("photo_verification/", views.PhotoVerificationDocView.as_view(), name="photo_verif"),
     path("documents/", views.DocView.as_view(), name="documents"),
@@ -35,5 +36,7 @@ urlpatterns = [
     path("all_verification/", views.AdminAllVerificationView.as_view(), name="all_verification"),
     path("all_payment/", views.AdminAllPaymentView.as_view(), name="all_payment"),
     path("all_support/", views.AdminAllSupportView.as_view(), name="all_support"),
+
+    # path("create_doc/", views.VerificationDocCreate.as_view(), name="create_doc"),
     path("", views.ProfileView.as_view(), name="profile"),
 ]

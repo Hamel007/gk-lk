@@ -22,9 +22,9 @@
 
 
 <div class="content-body">
-<form action="" class="search-inp">
-<input type="text" placeholder="Введите ФИО члена">
-<input type="button" value="" class="searchbut">
+<form method="get" action="{% url 'feedback:feedback_search' %}" class="search-inp">
+<input type="text" placeholder="Введите ФИО члена" name="wait">
+<input type="submit" value="" class="searchbut">
 </form>
 
 
@@ -40,13 +40,15 @@
 				</tr>
 			</thead>
 			<tbody>
+            {% for ver in verification_list %}
 				<tr>
-					<td>Иванов Аркадий Иванович</td>
+					<td>{{ ver.user.profile.full_name }}</td>
 					<td>Кандидат в пайщики</td>
 					<td>Документ на вступление</td>
 					<td>В ожидании</td>
 					<td><a href="">Посмотреть</a></td>
 				</tr>
+            {% endfor %}
 				<tr>
 					<td>Иванов Аркадий Иванович</td>
 					<td>Кандидат в пайщики</td>

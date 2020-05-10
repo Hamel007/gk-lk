@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Profile, AddressRegistration, AddressActual, AddressPost
+from .models import *
 
 
 @admin.register(Profile)
@@ -29,3 +29,17 @@ class AddressPostAdmin(admin.ModelAdmin):
     """Почтовый адрес для связи"""
     list_display = ('id', 'post_name')
     list_display_links = ('post_name',)
+
+
+@admin.register(UserDocument)
+class UserDocumentAdmin(admin.ModelAdmin):
+    """Документы пользователя"""
+    list_display = ('partner', 'status', 'id')
+    list_display_links = ('partner',)
+
+
+# @admin.register(ExemplarDocument)
+# class ExemplarDocumentAdmin(admin.ModelAdmin):
+#     """Документы пользователя"""
+#     list_display = ('title', 'sample', 'id')
+#     list_display_links = ('title',)

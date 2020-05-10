@@ -1,6 +1,6 @@
 from django import forms
 
-from backend.profile.models import Profile, AddressRegistration, AddressActual
+from backend.profile.models import Profile, AddressRegistration, AddressActual, UserDocument
 
 
 class UserSignUpForm(forms.ModelForm):
@@ -39,4 +39,12 @@ class UpdateAddressActualForm(forms.ModelForm):
     class Meta:
         model = AddressActual
         fields = ['country', 'region', 'city', 'street', 'house', 'corpus', 'flat', 'index']
+
+
+class UserDocumentForm(forms.ModelForm):
+    """Форма загрузки документов"""
+
+    class Meta:
+        model = UserDocument
+        fields = ('partner', 'sample', 'document',)
 

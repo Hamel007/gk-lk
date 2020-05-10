@@ -22,9 +22,9 @@
 
 
 <div class="content-body">
-<form action="" class="search-inp">
-<input type="text" placeholder="Введите ФИО члена">
-<input type="button" value="" class="searchbut">
+<form method="get" action="{% url 'feedback:feedback_search' %}" class="search-inp">
+<input type="text" placeholder="Введите ФИО члена" name="all">
+<input type="submit" value="" class="searchbut">
 </form>
 
 
@@ -38,66 +38,13 @@
 				</tr>
 			</thead>
 			<tbody>
+            {% for user in admin_users_list %}
 				<tr>
-					<td>Иванов Аркадий Иванович <a href="#" class="edit"></a></td>
-					<td>29.03.2020</td>
+					<td>{{ user.full_name }} <a href="#" class="edit"></a></td>
+					<td>{{ user.user.date_joined }}</td>
 					<td>Кандидат в пайщики</td>
 				</tr>
-				<tr>
-					<td>Иванов Аркадий Иванович <a href="#" class="edit"></a></td>
-					<td>29.03.2020</td>
-					<td>Кандидат в пайщики</td>
-				</tr>
-				<tr>
-					<td>Иванов Аркадий Иванович <a href="#" class="edit"></a></td>
-					<td>29.03.2020</td>
-					<td>Кандидат в пайщики</td>
-				</tr>
-				<tr>
-					<td>Иванов Аркадий Иванович <a href="#" class="edit"></a></td>
-					<td>29.03.2020</td>
-					<td>Кандидат в пайщики</td>
-				</tr>
-				<tr>
-					<td>Иванов Аркадий Иванович <a href="#" class="edit"></a></td>
-					<td>29.03.2020</td>
-					<td>Кандидат в пайщики</td>
-				</tr>
-				<tr>
-					<td>Иванов Аркадий Иванович <a href="#" class="edit"></a></td>
-					<td>29.03.2020</td>
-					<td>Кандидат в пайщики</td>
-				</tr>
-				<tr>
-					<td>Иванов Аркадий Иванович <a href="#" class="edit"></a></td>
-					<td>29.03.2020</td>
-					<td>Кандидат в пайщики</td>
-				</tr>
-				<tr>
-					<td>Иванов Аркадий Иванович <a href="#" class="edit"></a></td>
-					<td>29.03.2020</td>
-					<td>Кандидат в пайщики</td>
-				</tr>
-				<tr>
-					<td>Иванов Аркадий Иванович <a href="#" class="edit"></a></td>
-					<td>29.03.2020</td>
-					<td>Кандидат в пайщики</td>
-				</tr>
-				<tr>
-					<td>Иванов Аркадий Иванович <a href="#" class="edit"></a></td>
-					<td>29.03.2020</td>
-					<td>Кандидат в пайщики</td>
-				</tr>
-				<tr>
-					<td>Иванов Аркадий Иванович <a href="#" class="edit"></a></td>
-					<td>29.03.2020</td>
-					<td>Кандидат в пайщики</td>
-				</tr>
-				<tr>
-					<td>Иванов Аркадий Иванович <a href="#" class="edit"></a></td>
-					<td>29.03.2020</td>
-					<td>Кандидат в пайщики</td>
-				</tr>
+            {% endfor %}
 			</tbody>
 		</table>
 	</div>

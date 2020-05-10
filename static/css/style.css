@@ -717,6 +717,10 @@ margin-top: 20px;
 margin-right: 10px;
 }
 
+.content-body form{
+	border: none;
+}
+
 table.profile tr td:last-child{
 	font-weight: 500;
 }

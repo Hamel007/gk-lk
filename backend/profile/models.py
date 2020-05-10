@@ -1,7 +1,21 @@
+import os
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.urls import reverse
+
+
+def get_path_doc_user(instanse, file):
+
+    end_extention = file.split('.')[-1]
+    head = file.split('.')[0]
+    if len(head) > 10:
+        head = head[:10]
+    file_name = head + '.' + end_extention
+    print(instanse)
+    return os.path.join('user_doc/{0}', 'doc_{1}').format(instanse.partner.full_name, file_name)
 
 
 class Profile(models.Model):
@@ -63,7 +77,7 @@ class AbstractAddressModel(models.Model):
     country = models.CharField("Страна", max_length=50, blank=True, null=True)
     region = models.CharField("Регион", max_length=50, blank=True, null=True)
     city = models.CharField("Город", max_length=50, blank=True, null=True)
-    street = models.CharField("Улица", max_length=50, blank=True)
+    street = models.CharField("Улица", max_length=50, blank=True, null=True)
     house = models.IntegerField("Дом", blank=True, null=True)
     corpus = models.CharField("Корпус", max_length=50, blank=True, null=True)
     flat = models.IntegerField("Квартира", blank=True, null=True)
@@ -118,6 +132,43 @@ class AddressPost(AbstractAddressModel):
     class Meta:
         verbose_name = "Почтовый адрес для связи"
         verbose_name_plural = "Почтовые адреса для связи"
+
+
+# class ExemplarDocument(models.Model):
+#     """Модель образцов документов"""
+#     title = models.CharField("Документ", max_length=50)
+#     sample = models.FileField("Образец", upload_to='exemplar/')
+#
+#     def __str__(self):
+#         return self.title
+#
+#     class Meta:
+#         verbose_name = "Экземпляр документа"
+#         verbose_name_plural = "Экземпляры документов"
+
+
+class UserDocument(models.Model):
+    """Модель загруженных документов пользователем"""
+    partner = models.ForeignKey(Profile, verbose_name="Пайщик", on_delete=models.CASCADE, blank=True, null=True)
+    # exemplar = models.ForeignKey(ExemplarDocument,
+    #                              verbose_name="Образец",
+    #                              on_delete=models.CASCADE,
+    #                              blank=True, null=True)
+    title = models.CharField("Документ", max_length=50, blank=True, null=True)
+    sample = models.FileField("Образец", upload_to='exemplar/', blank=True, null=True)
+    document = models.FileField("Документ пайщика", upload_to=get_path_doc_user, blank=True)
+    status = models.BooleanField("Проверен", default=False)
+    date_status = models.DateTimeField("Дата проверки", blank=True, null=True)
+
+    def __str__(self):
+        return format(self.title)
+
+    def get_absolute_url(self):
+        return reverse("verification",)
+
+    class Meta:
+        verbose_name = "Документ пайщика"
+        verbose_name_plural = "Документы пайщика"
 
 
 # происходит конфликт с формой регистрации

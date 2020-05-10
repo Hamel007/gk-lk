@@ -5,11 +5,11 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, UpdateView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView
 from django.views.generic.base import View
 
-from .forms import UpdateAddressRegistrationForm, UpdateAddressActualForm
-from .models import Profile, AddressRegistration, AddressActual
+from .forms import UpdateAddressRegistrationForm, UpdateAddressActualForm, UserDocumentForm
+from .models import *
 
 
 class Turn(PermissionRequiredMixin, ListView):
@@ -17,11 +17,13 @@ class Turn(PermissionRequiredMixin, ListView):
     paginate_by = 10
     template_name = "turn/turn_list.html"
     permission_required = "profile.view_profile"
-    #login_url = '/profile/'
+
+    # login_url = '/profile/'
     # permission_denied_message = "dfdfdfd"
 
     def get_queryset(self):
         return Profile.objects.all()
+
 
 # class Pr(DetailView):
 #     """Очередь"""
@@ -84,6 +86,7 @@ class ProfileView(LoginRequiredMixin, DetailView):
     # permission_required = "profile.view_profile"
     model = Profile
     template_name = "profile/profil.html"
+
     # login_url = 'profile'
 
     def get_object(self, queryset=None):
@@ -128,11 +131,50 @@ class CreateAddress(View):
                 return redirect('/')
 
 
-# -? для теста
+# class ExemplarView(LoginRequiredMixin, ListView):
+#     """Экземпляры"""
+#     model = ExemplarDocument
+#     template_name = "documents/documents-verif.html"
+#     context_object_name = 'exemplar_list'
+#
+#     def get_queryset(self):
+#         # if self.request.user.is_superuser:
+#         #     return UserDocument.objects.all()
+#         return ExemplarDocument.objects.all()
+
+
 class VerificationDocView(LoginRequiredMixin, ListView):
     """Документы"""
-    model = Profile
+    model = UserDocument
     template_name = "documents/documents-verif.html"
+    context_object_name = 'user_doc'
+
+    def get_queryset(self):
+        # if self.request.user.is_superuser:
+        return UserDocument.objects.all()
+        # return UserDocument.objects.filter(partner_id=self.request.user.id)
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(PostDetail, self).get_context_data(**kwargs)
+    #     context['comments'] = Comment.objects.filter(post=self.object, is_delete=False).order_by('-created_at')
+    #     return context
+
+
+# class VerificationDocCreate(LoginRequiredMixin, CreateView):
+    # """Добавление документов пайщиком"""
+    #
+    # model = UserDocument
+    # form_class = UserDocumentForm
+    # template_name = "documents/documents-verif.html"
+    #
+    # def form_valid(self, form):
+    #     # a = UserDocument.objects.filter(sample=self.request.)
+    #     form.instance.partner_id = self.request.user.id
+    #     # form.instance.exemplar_id = self.request.s
+    #     print(self.request)
+    #     self.success_url = form.instance.get_absolute_url()
+    #     form.save()
+    #     return super(VerificationDocCreate, self).form_valid(form)
 
 
 # -? для теста
@@ -224,6 +266,7 @@ class AdminAllUserView(PermissionRequiredMixin, ListView):
     model = Profile
     template_name = "administrirovanie/admin-allusers.html"
     permission_required = "profile.view_profile"
+    context_object_name = "admin_users_list"
 
 
 # -? для теста
@@ -232,6 +275,7 @@ class AdminAllVerificationView(PermissionRequiredMixin, ListView):
     model = Profile
     template_name = "administrirovanie/admin-verif.html"
     permission_required = "profile.view_profile"
+    context_object_name = "verification_list"
 
 
 # -? для теста
@@ -240,6 +284,7 @@ class AdminAllPaymentView(PermissionRequiredMixin, ListView):
     model = Profile
     template_name = "administrirovanie/admin-podtv.html"
     permission_required = "profile.view_profile"
+    context_object_name = "pay_list"
 
 
 # -? для теста
@@ -248,4 +293,3 @@ class AdminAllSupportView(PermissionRequiredMixin, ListView):
     model = Profile
     template_name = "administrirovanie/admin-support.html"
     permission_required = "profile.view_profile"
-

@@ -1,73 +1,79 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block mobile %}
-	<!-- Меню и заголовок для мобилы -->
-	<div class="const mobile-nav">
-		<a href="javascript:;" class="menu-open"></a>
-		<h1>
-			Верификация документов  <!-- Дублировал для мобильной версии -->
-		</h1>
-	</div>
-	<!-- /Меню и заголовок для мобилы -->
+    <!-- Меню и заголовок для мобилы -->
+    <div class="const mobile-nav">
+        <a href="javascript:;" class="menu-open"></a>
+        <h1>
+            Верификация документов  <!-- Дублировал для мобильной версии -->
+        </h1>
+    </div>
+    <!-- /Меню и заголовок для мобилы -->
 {% endblock mobile %}
 
 
 {% block content %}
 
-			<div class="content">
-				<h1>
-					Верификация документов
-				</h1>
+    <div class="content">
+        <h1>
+            Верификация документов
+        </h1>
 
-                {% include "include/verif_doc_menu.html" %}
+        {% include "include/verif_doc_menu.html" %}
 
-				<div class="content-body">
-					<table>
-						<thead>
-							<tr>
-								<td>Документ</td>
-								<td>Образец</td>
-								<td>Загрузить документ</td>
-								<td>Статус</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Заявление на вступление в члены ЖК</td>
-								<td><a href="#" target="_blank">Смотреть образец</a></td>
-								<td>
-									<a href="#" target="_blank">Смотреть документ</a>
-								</td>
-								<td>Проверен. 12:00 25.08.2020</td>
-							</tr>
-							<tr>
-								<td>Заявление на вступление в члены ЖК</td>
-								<td><a href="#" target="_blank">Смотреть образец</a></td>
-								<td>
-									<div class="file-inp">
-									<label><input type="file" name="file"><span>Выберите файл</span></label>
-									</div>
-								</td>
-								<td>Не загружен</td>
-							</tr>
-							<tr>
-								<td>Заявление на вступление в члены ЖК</td>
-								<td><a href="#" target="_blank">Смотреть образец</a></td>
-								<td>
-									<div class="file-inp">
-									<label><input type="file" name="file"><span>Выберите файл</span></label>
-									</div>
-								</td>
-								<td>Не загружен</td>
-							</tr>
-						</tbody>
-					</table>
+        <div class="content-body">
+            <table>
+                <thead>
+                <tr>
+                    <td>Документ</td>
+                    <td>Образец</td>
+                    <td>Загрузить документ</td>
+                    <td>Статус</td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for doc in user_doc %}
+{#                    {{ doc.sample }}#}
+{#                    <tr>#}
+                        <td>{{ doc.title }}</td>
+{#                        <td><a href="{{ doc.sample.url }}" target="_blank">Смотреть образец</a></td>#}
+                        <td>
+                                                        {% if doc.document %}
+                                                            <a href="{{ doc.document.url }}" target="_blank">Смотреть документ</a>
+                                                        {% else %}
 
-<input type="button" value="Сохранить" class="savebut">
-<div class="info"><img src="img/information.svg" alt="">Изменения сохранены</div>
-<div class="error"><img src="img/error.svg" alt="">Ошибка сохранения. Обратитесь в <a href="#">поддержку</a></div>
+                            <form id="doc" method="POST" action="{% url 'create_doc' %}"
+                                  enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="file-inp">
+                                    <label><input required type="file"
+                                                  name="document"><span>Выберите файл</span></label>
+                                </div>
+                            </form>
+                                                        {% endif %}
+                        </td>
+{#                        {% if doc.status == True %}#}
+{#                            <td>{{ doc.date_status }}</td>#}
+{#                        {% elif not doc.document %}#}
+{#                            <td>Не загружен</td>/#}
+{#                        {% elif doc.document %}#}
+{#                            <td>На проверке</td>#}
+{#                        {% endif %}#}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {#            <form id="doc" method="POST" action="{% url 'create_doc' %}" enctype="multipart/form-data">#}
+            {#                {% csrf_token %}#}
+            <input form="doc" type="submit" value="Сохранить" class="savebut">
+            {#            </form>#}
+            <div class="info"><img src="{% static 'img/information.svg' %}" alt="">Изменения сохранены</div>
+            <div class="error"><img src="{% static 'img/error.svg' %}" alt="">Ошибка сохранения. Обратитесь в <a
+                    href="#">поддержку</a>
+            </div>
 
-				</div>
+        </div>
 
-			</div>
-    {% endblock content %}
+    </div>
+{% endblock content %}

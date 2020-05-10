@@ -22,9 +22,9 @@
 
 
 <div class="content-body">
-<form action="" class="search-inp">
-<input type="text" placeholder="Введите ФИО члена">
-<input type="button" value="" class="searchbut">
+<form method="get" action="{% url 'feedback:feedback_search' %}" class="search-inp">
+<input type="text" placeholder="Введите ФИО члена" name="pay">
+<input type="submit" value="" class="searchbut">
 </form>
 
 
